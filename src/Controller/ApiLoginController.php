@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class ApiLoginController extends AbstractController
 {
     #[Route('/api/login', name: 'api_login', methods: ['POST'])]
-    public function login(UserInterface $userInterface): JsonResponse
+    public function login(): JsonResponse
     {
         $user = $this->getUser();
 
@@ -20,7 +20,7 @@ class ApiLoginController extends AbstractController
 
         return new JsonResponse([
             'message' => 'Login successful',
-            'user' => $user->getEmail(), 
+            'user' => $user->getUserIdentifier(), // Utilisez getUserIdentifier() pour récupérer l'identifiant
         ]);
     }
 }

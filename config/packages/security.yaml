@@ -1,11 +1,13 @@
 security:
     password_hashers:
-        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+        App\Entity\Utilisateur:
+            algorithm: bcrypt
+            cost: 12
 
     providers:
         app_user_provider:
             entity:
-                class: App\Entity\User
+                class: App\Entity\Utilisateur
                 property: email # Utilisation de l'email comme identifiant
 
     firewalls:
@@ -15,6 +17,7 @@ security:
             stateless: true
             json_login:
                 check_path: /api/login_check
+                username_path: email  # Utilisez `email` comme identifiant
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
