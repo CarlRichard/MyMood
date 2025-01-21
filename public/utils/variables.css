@@ -1,13 +1,57 @@
-:root {
-  --primary-color: #000;
-  --secondary-color: #D91E41;
-  --tertiary-color: #FFF;
 
-  --primary-bg-color: #1E1C59;
-  --secondary-bg-color: #64bceb;
-  --tertiary-bg-color: #cfc50f;
-  --fourth-bg-color: #4adc54;
-  --fifth-bg-color: #d20426;
-  --sixth-bg-color: #FF6B6E;
-  --seventh-bg-color: #EFF2FF;
-  }
+:root {
+    --primary-color: #000;
+    --secondary-color: #d91e41;
+    --tertiary-color: #fff;
+
+    --primary-bg-color: #1e1c59;
+    --secondary-bg-color: #64bceb;
+    --tertiary-bg-color: #cfc50f;
+    --fourth-bg-color: #4adc54;
+    --fifth-bg-color: #d20426;
+    --sixth-bg-color: #ff6b6e;
+    --seventh-bg-color: #eff2ff;
+}
+
+/* .pacifico-regular {
+    font-family: "Pacifico", serif;
+    font-weight: 400;
+    font-style: normal;
+  } */
+
+/* .roboto-<uniquifier> {
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}  */
+
+/* h2 {
+  font-family: "Pacifico", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+}
+p {
+ font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+}
+button/input {
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 14px;
+  font-weight: 500;
+}
+::placeholder {
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 400;
+} */

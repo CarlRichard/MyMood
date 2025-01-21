@@ -3,32 +3,31 @@
 
 /*=====RESET CSS=====*/
 * {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  list-style-type: none;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
 }
 
 /*=====DESKTOP=====*/
 header {
-background-color: var(--primary-bg-color);
-display: flex;
-justify-content: flex-end;
-align-items: center;
-height: 77px;
+    background-color: var(--primary-bg-color);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 77px;
 }
 .header_button {
-  width: 115px;
-  height: 35px;
-  border-radius: 4px;
-background: var(--tertiary-color);
-border: none;
-color: var(--secondary-color);
-font-family: Inter;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-margin-right: 13px;
+    width: 115px;
+    height: 35px;
+    border-radius: 4px;
+    background: var(--tertiary-color);
+    border: none;
+    color: var(--secondary-color);
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 14px;
+    font-weight: 500;
+    margin-right: 13px;
 }
