@@ -27,7 +27,7 @@ header {
     color: var(--secondary-color);
     font-optical-sizing: auto;
     font-style: normal;
-    font-weight: 14px;
+    font-size: 14px;
     font-weight: 500;
     margin-right: 13px;
 }

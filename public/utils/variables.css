@@ -45,7 +45,7 @@ button/input {
   font-family: "Roboto", serif;
   font-optical-sizing: auto;
   font-style: normal;
-  font-weight: 14px;
+  font-size: 14px;
   font-weight: 500;
 }
 ::placeholder {
