@@ -17,11 +17,13 @@
     <title>MyMood - Mood</title>
   </head>
   <body>
+    <!-- HEADER -->
     <header class="header">
       <img src="../../assets/logo-mymood.png" alt="Logo du site MyMood" />
       <button class="header_button">Mon profil</button>
     </header>
     <main>
+      <!-- SECTION DESCRIPTION MY MOOD -->
       <section class="section_description_mymood">
         <p>
           Cet outil est conçu pour vous permettre de communiquer votre Mood.
@@ -37,21 +39,26 @@
           plus proche.
         </p>
       </section>
-
+      <!-- SECTION HUMEUR MY MOOD -->
       <section class="section_humeur_mymood">
-        <div class="humeur_container_appel">
-          <div class="humeur_appel">
-            <span>Appel</span>
-          </div>
+        <div class="humeur_container_button_appel">
+          <a href="#" class="humeur_container_appel">
+            <div class="humeur_appel">
+              <span>Appel</span>
+            </div>
+          </a>
+
+          <button class="humeur_button">Valider mon humeur</button>
         </div>
 
         <div class="humeur_container_slide_text">
-          <p>Je me sens mal</p>
-
+          <div class="humeur_container_text">
+            <p>Je me sens mal</p>
+            <p>Tout est OK.</p>
+          </div>
           <div class="humeur_slider_container">
             <input class="slider" type="range" min="1" max="100" value="50" />
           </div>
-          <p>Tout est OK.</p>
         </div>
       </section>
     </main>

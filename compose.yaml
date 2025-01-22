@@ -49,8 +49,8 @@ services:
       timeout: 5s
       retries: 5
       start_period: 60s
-    volumes:
-      - database_data:/var/lib/mysql:rw
+    # volumes:
+    #   - database_data:/var/lib/mysql:rw
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/db/data:/var/lib/mysql:rw
 ###< doctrine/doctrine-bundle ###
@@ -62,5 +62,5 @@ volumes:
 ###< symfony/mercure-bundle ###
 
 ###> doctrine/doctrine-bundle ###
-  database_data:
+  # database_data:
 ###< doctrine/doctrine-bundle ###

@@ -41,7 +41,14 @@ p {
   font-size: 16px;
   font-weight: 400;
 }
-button/input {
+button {
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 500;
+}
+  input {
   font-family: "Roboto", serif;
   font-optical-sizing: auto;
   font-style: normal;
