@@ -34,7 +34,7 @@ header {
     font-weight: lighter;
 }
 .header_container_button button:hover {
-    scale: 1.03;
+    scale: 1.02;
     background-color: var(--button-hover-bg-color);
     font-weight: 500;
 }
@@ -58,17 +58,16 @@ h2 {
 
 /* SECTION LISTE FORMATION STAGIAIRES */
 .section_liste_formation_stagiaires {
-    margin-top: 63px;
+    margin: 63px 15px;
 }
-/* container principal formation stagiaires */
-.section_liste_formation_stagiaires > h3 {
-    margin: 0 auto;
+.container_formations_h3 > h3 {
+    text-align: center;
 }
 /* container formation */
 .container_listes_formations {
     display: flex;
+    justify-content: center;
     gap: 22px;
-    margin-top: 17px;
 }
 .container_formations {
     display: flex;
@@ -79,6 +78,7 @@ h2 {
     padding: 37px 30px;
     width: fit-content;
     box-shadow: 2px 2px 8px -2px var(--border-color);
+    margin-top: 17px;
 }
 .container_label_input_formation {
     display: flex;
@@ -182,7 +182,7 @@ h2 {
     gap: 5px;
 }
 .button_formation:hover {
-    scale: 1.01;
+    scale: 1.03;
     background-color: var(--button-hover-bg-color);
     font-weight: 500;
 }
@@ -190,17 +190,19 @@ h2 {
     font-size: 20px;
     font-weight: lighter;
 }
+
+/* container stagiaires & listes */
 /* container stagiaires */
-.container_h4_stagiaires {
-}
-h4 {
+.container_h4_stagiaires > h4 {
+   margin-left: 60px;
 }
 .container_stagiaires {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 14px;
-    margin-top: 4px;
+    margin-top: 22px;
 }
 .container_stagiaires input {
     padding: 5px 0 5px 8px;
@@ -214,7 +216,7 @@ h4 {
 }
 .container_stagiaires input:focus {
   background-color: var(--input-focus-bg-color);
-  scale: 1.05;
+  scale: 1.03;
   font-weight: 500;
   color: var(--primary-color);
 }
@@ -242,8 +244,15 @@ h4 {
 }
 .container_stagiaires details:hover {
   background-color: var(--button-hover-bg-color);
-  scale: 1.04;
+  scale: 1.03;
   font-weight: 500;
+}
+.container_stagiaires details > summary {
+    font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
 }
 .input_email {
     width: 240px;
@@ -279,8 +288,7 @@ border-radius: 15px;
 background-color: var(--primary-bg-color);
 padding: 20px 14px;
 box-shadow: 2px 2px 8px -2px var(--border-color);
-z-index: 1;
-margin-top: 25px;
+margin-top: 8px;
 }
 .container_modal_stagiaires_label_input {
 display: flex;
@@ -303,7 +311,7 @@ gap: 8px;
   width: 28px;
   height: 28px;
   border-radius: 5px;
-  border: 1px solid var(--secondary-bg-color);
+  border: 1px solid var(--border-color);
   box-shadow: 2px 2px 8px -2px var(--border-color);
   cursor: pointer;
   position: relative;
@@ -353,12 +361,151 @@ font-weight: lighter;
 }
 
 
-
-
-/* FOOTER */
-footer {
+/* container h3 listes */
+.container_h3_listes {
+margin-top: 40px;
+}
+.container_h3_listes > h3 {
+text-align: center;
+}
+/* container listes */
+.container_listes_border {
+    padding: 22px 56px;
+    margin-top: 10px;
+    border: 1px solid var(--primary-bg-color);
+    box-shadow: 2px 2px 8px -4px var(--border-color);
+    border-radius: 15px;
+    height: 677px;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    scroll-behavior: smooth;
+}
+.container_listes {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+.container_listes input {
+    padding: 5px 0 5px 8px;
+    color: var(--primary-color);
+    background-color: var(--tertiary-color);
+    border-radius: 5px;
+    border: 1px solid var(--secondary-color);
+    box-shadow: 2px 2px 8px -5px #ff002f;
+    height: 30px;
+    transition: 0.2s;
+}
+.container_listes input:focus {
+  background-color: var(--input-focus-bg-color);
+  scale: 1.03;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+.container_listes input::placeholder {
+    color: #8f8f8f;
+}
+.input_firstname {
+    width: 169px;
+}
+.input_name {
+    width: 155px;
+}
+.container_listes details {
+    width: 176px;
+    height: 30px;
+    padding: 5px 0;
+    color: var(--primary-color);
+    background-color: var(--tertiary-color);
+    border-radius: 5px;
+    border: 1px solid var(--secondary-color);
+    box-shadow: 2px 2px 8px -5px #ff002f;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.container_listes details > summary {
+    font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+}
+.container_listes details:hover {
+  background-color: var(--button-hover-bg-color);
+  scale: 1.03;
+  font-weight: 500;
+}
+.container_modal_stagiaires_label_input input {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--tertiary-color);
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    box-shadow: 2px 2px 8px -2px var(--border-color);
+    cursor: pointer;
+    position: relative;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+.input_email {
+    width: 240px;
+}
+.liste_input_check {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--tertiary-color);
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
+    border: 1px solid var(--secondary-bg-color);
+    box-shadow: 2px 2px 8px -2px var(--border-color);
+    cursor: pointer;
+    position: relative;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-left: 6px;
+}
+.liste_input_check:hover {
+    scale: 1.06;
+    background-color: var(--input-focus-bg-color);
+}
+.liste_input_check:checked::before {
+    content: "✕";
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--primary-color);
+    font-size: 16px;
+    font-weight: lighter;
+}
+.container_listes_button {
+    color: var(--secondary-color);
+    border-radius: 5px;
+    padding: 10px 10px;
+    background-color: var(--tertiary-color);
+    border: 1px solid var(--secondary-color);
+    box-shadow: 2px 2px 8px -4px var(--secondary-color);
+    cursor: pointer;
+    margin-top: 30px;
+    transition: 0.2s;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.container_listes_button:hover {
+    scale: 1.03;
+    background-color: var(--button-hover-bg-color);
+    font-weight: 500;
+}
+.container_listes_button > span {
+    font-size: 20px;
+    font-weight: lighter;
 }

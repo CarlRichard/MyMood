@@ -45,101 +45,1259 @@
 
       <!-- SECTION LISTE FORMATION STAGIAIRES -->
       <section class="section_liste_formation_stagiaires">
-        <h3>Les formations</h3>
         <!-- container principal formation stagiaires -->
         <div class="container_listes_formations">
           <!-- container formation -->
-          <div class="container_formations">
-            <div class="container_label_input_formation">
-              <label>Formation 1</label>
-              <input type="checkbox" id="scales" name="scales" />
+          <div class="container_formations_h3">
+            <h3>Les formations</h3>
+            <div class="container_formations">
+              <div class="container_label_input_formation">
+                <label>Formation 1</label>
+                <input type="checkbox" id="scales" name="scales" />
+              </div>
+              <div class="container_label_input_formation">
+                <label>Formation 2</label>
+                <input type="checkbox" id="scales" name="scales" />
+              </div>
+              <div class="container_label_input_formation">
+                <label>Formation 3</label>
+                <input type="checkbox" id="scales" name="scales" />
+              </div>
+              <div class="container_label_input_formation">
+                <label>Formation 4</label>
+                <input type="checkbox" id="scales" name="scales" />
+              </div>
+              <div class="container_label_input_formation">
+                <label>Formation 5</label>
+                <input type="checkbox" id="scales" name="scales" />
+              </div>
+              <div class="container_label_input_formation">
+                <label>Formation 6</label>
+                <input type="checkbox" id="scales" name="scales" />
+              </div>
+              <div class="container_input_button_formation">
+                <input
+                  type="text"
+                  id="text"
+                  name="name"
+                  placeholder="Nouvelle formation"
+                />
+                <button>+</button>
+              </div>
+              <button class="button_formation">
+                <span class="material-symbols-outlined"> delete </span>supprimer
+              </button>
             </div>
-            <div class="container_label_input_formation">
-              <label>Formation 2</label>
-              <input type="checkbox" id="scales" name="scales" />
-            </div>
-            <div class="container_label_input_formation">
-              <label>Formation 3</label>
-              <input type="checkbox" id="scales" name="scales" />
-            </div>
-            <div class="container_label_input_formation">
-              <label>Formation 4</label>
-              <input type="checkbox" id="scales" name="scales" />
-            </div>
-            <div class="container_label_input_formation">
-              <label>Formation 5</label>
-              <input type="checkbox" id="scales" name="scales" />
-            </div>
-            <div class="container_label_input_formation">
-              <label>Formation 6</label>
-              <input type="checkbox" id="scales" name="scales" />
-            </div>
-            <div class="container_input_button_formation">
-              <input
-                type="text"
-                id="text"
-                name="name"
-                placeholder="Nouvelle formation"
-              />
-              <button>+</button>
-            </div>
-            <button class="button_formation">
-              <span class="material-symbols-outlined"> delete </span>supprimer
-            </button>
           </div>
 
-          <!-- container stagiaires -->
-          <div class="container_h4_stagiaires">
-            <h4>Ajouter un stagiaire</h4>
-            <div class="container_stagiaires">
-              <input class="input_firstname" type="text" id="first-name" name="first-name" required"
-              placeholder="Prénom"/>
-              <input class="input_name" type="text" id="name" name="name"
-              required" placeholder="Nom"/>
-              <details>
-                <summary>Formation</summary>
-               
-                <!-- modal stagiaire -->
-                <div class="container_modal_stagiaires">
-                  <div class="container_modal_stagiaires_label_input">
-                    <label>Formation 1</label>
-                    <input type="checkbox" id="scales" name="scales" />
+          <!-- container stagiaires & listes -->
+          <div class="container_stagiaires_liste">
+            <!-- container stagiaires -->
+            <div class="container_h4_stagiaires">
+              <h4>Ajouter un stagiaire</h4>
+              <div class="container_stagiaires">
+                <input class="input_firstname" type="text" id="first-name"
+                name="first-name" required" placeholder="Prénom"/> <input
+                class="input_name" type="text" id="name" name="name" required"
+                placeholder="Nom"/>
+                <details>
+                  <summary>Formation</summary>
+                  <!-- modal stagiaire -->
+                  <div class="container_modal_stagiaires">
+                    <div class="container_modal_stagiaires_label_input">
+                      <label>Formation 1</label>
+                      <input type="checkbox" id="scales" name="scales" />
+                    </div>
+                    <div class="container_modal_stagiaires_label_input">
+                      <label>Formation 2</label>
+                      <input type="checkbox" id="scales" name="scales" />
+                    </div>
+                    <div class="container_modal_stagiaires_label_input">
+                      <label>Formation 3</label>
+                      <input type="checkbox" id="scales" name="scales" />
+                    </div>
+                    <div class="container_modal_stagiaires_label_input">
+                      <label>Formation 4</label>
+                      <input type="checkbox" id="scales" name="scales" />
+                    </div>
+                    <div class="container_modal_stagiaires_label_input">
+                      <label>Formation 5</label>
+                      <input type="checkbox" id="scales" name="scales" />
+                    </div>
+                    <div class="container_modal_stagiaires_label_input">
+                      <label>Formation 6</label>
+                      <input type="checkbox" id="scales" name="scales" />
+                    </div>
+                    <button class="modal_stagiaires_valider">
+                      <span class="material-symbols-outlined"> check </span
+                      >Valider
+                    </button>
+                    <button class="modal_stagiaires_annuler">
+                      <span class="material-symbols-outlined"> close </span
+                      >Annuler
+                    </button>
                   </div>
-                  <div class="container_modal_stagiaires_label_input">
-                    <label>Formation 2</label>
-                    <input type="checkbox" id="scales" name="scales" />
-                  </div>
-                  <div class="container_modal_stagiaires_label_input">
-                    <label>Formation 3</label>
-                    <input type="checkbox" id="scales" name="scales" />
-                  </div>
-                  <div class="container_modal_stagiaires_label_input">
-                    <label>Formation 4</label>
-                    <input type="checkbox" id="scales" name="scales" />
-                  </div>
-                  <div class="container_modal_stagiaires_label_input">
-                    <label>Formation 5</label>
-                    <input type="checkbox" id="scales" name="scales" />
-                  </div>
-                  <div class="container_modal_stagiaires_label_input">
-                    <label>Formation 6</label>
-                    <input type="checkbox" id="scales" name="scales" />
-                  </div>
-                    <button class="modal_stagiaires_valider"><span class="material-symbols-outlined">
-                      check
-                      </span>Valider</button>
-                    <button class="modal_stagiaires_annuler"><span class="material-symbols-outlined">
-                      close
-                      </span>Annuler</button>
+                </details>
+                <input
+                  class="input_email"
+                  placeholder="Adresse mail"
+                  type="email"
+                  id="email"
+                />
+                <button>+</button>
+              </div>
+            </div>
+
+            <!-- container h3 listes -->
+            <div class="container_h3_listes">
+              <h3>Les stagiaires</h3>
+              <!-- container listes -->
+              <div class="container_listes_border">
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
                 </div>
-              </details>
-              <input
-                class="input_email"
-                placeholder="Adresse mail"
-                type="email"
-                id="email"
-              />
-              <button>+</button>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                <div class="container_listes">
+                  <input class="input_firstname" type="text" id="first-name"
+                  name="first-name" required" placeholder="Prénom"/> <input
+                  class="input_name" type="text" id="name" name="name" required"
+                  placeholder="Nom"/>
+                  <details>
+                    <summary>Formation</summary>
+                    <!-- modal stagiaire -->
+                    <div class="container_modal_stagiaires">
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 1</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 2</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 3</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 4</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 5</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <div class="container_modal_stagiaires_label_input">
+                        <label>Formation 6</label>
+                        <input type="checkbox" id="scales" name="scales" />
+                      </div>
+                      <button class="modal_stagiaires_valider">
+                        <span class="material-symbols-outlined"> check </span
+                        >Valider
+                      </button>
+                      <button class="modal_stagiaires_annuler">
+                        <span class="material-symbols-outlined"> close </span
+                        >Annuler
+                      </button>
+                    </div>
+                  </details>
+                  <input
+                    class="input_email"
+                    placeholder="Adresse mail"
+                    type="email"
+                    id="email"
+                  />
+                  <input
+                    class="liste_input_check"
+                    type="checkbox"
+                    id="scales"
+                    name="scales"
+                  />
+                </div>
+
+                
+                <button class="container_listes_button">
+                  <span class="material-symbols-outlined">delete</span>supprimer
+                </button>
+              </div>
             </div>
           </div>
         </div>
