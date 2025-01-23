@@ -28,16 +28,16 @@ header {
     align-items: center; 
     
 }
-.logo-container {
+.logo-container {   /* div container du logo */
     height: 80%;
     margin-left: 4vw;
 }
-.logo {
+.logo {   /* img classe logo */
     height: 100%;
 }
 
 /* buttons */
-.btn {
+.btn {   /* tous les boutons */
     border-radius: 7px;
     padding: 5px 15px;
     border: var(--button-border);
@@ -46,10 +46,10 @@ header {
 }
 
 /* header buttons */
-.left-btn {   /* div bouton de gauche */
+.left-btn-container {   /* div container bouton de gauche */
     margin-left: 2vw;
 }
-.right-btn {   /* div bouton(s) de droite */
+.right-btn-container {   /* div container bouton(s) de droite */
    margin-left: auto; 
    margin-right: 4vw;
 }
@@ -95,7 +95,7 @@ header {
     .logo-container {
         margin-left: 0;
     }
-    .right-btn {   /* div bouton de droite */ 
+    .right-btn-container {   /* div container bouton(s) de droite */ 
         margin-right: 0;
      }
     .header-btn {
