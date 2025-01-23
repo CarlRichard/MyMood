@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- CSS -->
+    <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/style.css" />
     <!-- JS -->
     <script defer src="./js/script.js"></script>
@@ -11,7 +12,11 @@
   </head>
   <body>
     <header>
-      <img src="./assets/logo-mymood.png" alt="">
+      <div class="logo-container">
+        <a href="./pages/mymood.html">
+          <img class="logo" src="./assets/logo-mymood.png" alt="revenir à la page d'accueil">
+        </a>
+      </div>
     </header>
     <main>
       <section class="admin">
@@ -21,11 +26,11 @@
             id="email"
             pattern=".+@example\.com"
           />
-            <input class="input_password" placeholder="Password" type="password" id="pass" name="password" />
-          
-            <a href="./pages/mymood.html">
-              <input class="input_submit" type="submit" value="Connect" />
-            </a>
+          <input class="input_password" placeholder="Password" type="password" id="pass" name="password"/>
+        
+          <a href="./pages/mymood.html">
+            <input class="input_submit" type="submit" value="Connect" />
+          </a>
         </form>
       </section>
     </main>
