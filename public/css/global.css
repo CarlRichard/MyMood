@@ -1,0 +1,106 @@
+/*=====IMPORTATION DES VARIABLES=====*/
+@import url("../utils/variables.css");
+
+/*=====RESET CSS=====*/
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*=====DESKTOP=====*/
+body {
+    height: 100vh;
+    text-decoration: none;
+    list-style-type: none;
+    background-color: var(--seventh-bg-color);   /* var(--white-bg) */
+    font-family: var(--ff-body);
+    font-size: var(--fs-12);
+    font-weight: var(--fw-regular);
+}
+
+header {
+    height: 74px;
+    width: 100vw;
+    padding: 0.5em;
+    background-color: var(--primary-bg-color);   /* var(--dark-blue-bg) */ 
+    display: flex; 
+    align-items: center; 
+    
+}
+.logo-container {   /* div container du logo */
+    height: 80%;
+    margin-left: 4vw;
+}
+.logo {   /* img classe logo */
+    height: 100%;
+}
+
+/* buttons */
+.btn {   /* tous les boutons */
+    border-radius: 7px;
+    padding: 5px 15px;
+    border: var(--button-border);
+    color: var(--secondary-color);   /* var(--red-color) */
+    cursor: pointer;
+}
+
+/* header buttons */
+.left-btn-container {   /* div container bouton de gauche */
+    margin-left: 2vw;
+}
+.right-btn-container {   /* div container bouton(s) de droite */
+   margin-left: auto; 
+   margin-right: 4vw;
+}
+.header-btn {
+    width: 172px;
+    height: 42px;
+}
+
+/* main buttons */
+.main-btn {
+    width: 118px;
+    height: 41px;
+    font-size: var(--fs-14);
+}
+
+/* modal buttons */
+.big-modal-btn {
+    width: 162px;
+    height: 41px;
+    font-size: var(--fs-12);
+}
+.little-modal-btn {
+    width: 162px;
+    height: 28px;
+    font-size: var(--fs-12);
+}
+
+
+
+/*=====RESPONSIVE=====*/
+
+/*=====TABLET=====*/
+@media (max-width: 900px) {
+    .header-btn {
+        width: 130px;
+        height: 38px;
+    }
+}
+
+
+/*=====SMARTPHONE=====*/
+@media (max-width: 600px) {
+    .logo-container {
+        margin-left: 0;
+    }
+    .right-btn-container {   /* div container bouton(s) de droite */ 
+        margin-right: 0;
+     }
+    .header-btn {
+        width: 115px;
+        height: 35px;
+        border-radius: 4px;
+    }
+}
