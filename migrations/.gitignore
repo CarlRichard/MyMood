@@ -1,0 +1,2 @@
+# Ignorer les migrations générées par Doctrine
+migrations/

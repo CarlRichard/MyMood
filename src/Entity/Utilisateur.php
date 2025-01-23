@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
@@ -9,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Metadata\ApiResource;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
@@ -23,36 +23,25 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
-    /**
-     * @var string The Utilisateur role
-     */
-    #[ORM\Column(type: 'string')]
-    private ?string $roles = 'ROLE_USER'; // Valeur par défaut 'ROLE_USER'
+    #[ORM\Column(type: 'json')]
+    private array $roles = ['ROLE_ETUDIANT'];
 
-    /**
-     * @var string The hashed password
-     */
     #[ORM\Column]
     private ?string $password = null;
 
-    /**
-     * @var Collection<int, Cohorte>
-     */
-    #[ORM\ManyToMany(targetEntity: Cohorte::class, inversedBy: 'utilisateurs')]
-    private Collection $groupe;
+    #[ORM\OneToMany(targetEntity: Historique::class, mappedBy: 'utilisateur', cascade: ['persist', 'remove'])]
+    private Collection $historiques;
 
-    /**
-     * @var Collection<int, Blacklist>
-     */
+    #[ORM\ManyToMany(targetEntity: Cohorte::class, inversedBy: 'utilisateurs')]
+    private Collection $groupes;
+
     #[ORM\OneToMany(targetEntity: Blacklist::class, mappedBy: 'utilisateur')]
     private Collection $blacklist;
 
-    #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
-    private ?Alerte $alerte = null;
-
     public function __construct()
     {
-        $this->groupe = new ArrayCollection();
+        $this->historiques = new ArrayCollection();
+        $this->groupes = new ArrayCollection();
         $this->blacklist = new ArrayCollection();
     }
 
@@ -69,78 +58,95 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): static
     {
         $this->email = $email;
-
         return $this;
     }
 
-    /**
-     * A visual identifier that represents this Utilisateur.
-     *
-     * @see UserInterface
-     */
     public function getUserIdentifier(): string
     {
         return (string) $this->email;
     }
 
-    /**
-     * @see UserInterface
-     *
-     * @return array<string> Le tableau contient un seul rôle
-     */
     public function getRoles(): array
     {
-        return [$this->roles]; // Retourne un tableau avec un seul rôle
+        return $this->roles;
     }
 
-    /**
-     * @param string $role Le rôle de l'utilisateur
-     */
-    public function setRoles(string $role): static
+    public function setRoles(array $roles): static
     {
-        $this->roles = $role;
-
+        $this->roles = $roles;
         return $this;
     }
 
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
+    public function updateRole(string $nouveauRole): void
+    {
+        if (!in_array($nouveauRole, ['ROLE_ETUDIANT', 'ROLE_SUPERVISEUR' ,'ROLE_ADMIN'])) {
+            throw new \InvalidArgumentException('Rôle invalide.');
+        }
+
+        if (!in_array($nouveauRole, $this->roles)) {
+            $this->roles[] = $nouveauRole;
+        }
+    }
+
     public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    public function setPassword(string $password): static
+    /**
+     * @param string $password
+     * @param UserPasswordHasherInterface $passwordHasher
+     * @return $this
+     */
+    public function setPassword(string $hashedPassword): static
     {
-        $this->password = $password;
+        $this->password = $hashedPassword; // Vous passez ici un mot de passe déjà haché
+        return $this;
+    }
+    
+
+
+    public function eraseCredentials(): void
+    {
+        // Logique pour effacer les informations sensibles
+    }
+
+    public function getHistoriques(): Collection
+    {
+        return $this->historiques;
+    }
+
+    public function addHistorique(Historique $historique): static
+    {
+        if (!$this->historiques->contains($historique)) {
+            $this->historiques->add($historique);
+            $historique->setUtilisateur($this);
+        }
 
         return $this;
     }
 
-    /**
-     * Removes sensitive data from the user.
-     *
-     * @see UserInterface
-     */
-    public function eraseCredentials(): void
+    public function removeHistorique(Historique $historique): static
     {
-        // Clear temporary, sensitive data if needed.
-        // Example: $this->plainPassword = null;
+        if ($this->historiques->removeElement($historique)) {
+            if ($historique->getUtilisateur() === $this) {
+                $historique->setUtilisateur(null);
+            }
+        }
+
+        return $this;
     }
 
-    /**
-     * @return Collection<int, Cohorte>
-     */
-    public function getGroupe(): Collection
+    public function getGroupes(): Collection
     {
-        return $this->groupe;
+        return $this->groupes;
     }
 
     public function addGroupe(Cohorte $groupe): static
     {
-        if (!$this->groupe->contains($groupe)) {
-            $this->groupe->add($groupe);
+        if (!$this->groupes->contains($groupe)) {
+            $this->groupes->add($groupe);
+            $groupe->addUtilisateur($this);
         }
 
         return $this;
@@ -148,14 +154,13 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function removeGroupe(Cohorte $groupe): static
     {
-        $this->groupe->removeElement($groupe);
+        if ($this->groupes->removeElement($groupe)) {
+            $groupe->removeUtilisateur($this);
+        }
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Blacklist>
-     */
     public function getBlacklist(): Collection
     {
         return $this->blacklist;
@@ -174,23 +179,10 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeBlacklist(Blacklist $blacklist): static
     {
         if ($this->blacklist->removeElement($blacklist)) {
-            // set the owning side to null (unless already changed)
             if ($blacklist->getUtilisateur() === $this) {
                 $blacklist->setUtilisateur(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getAlerte(): ?Alerte
-    {
-        return $this->alerte;
-    }
-
-    public function setAlerte(?Alerte $alerte): static
-    {
-        $this->alerte = $alerte;
 
         return $this;
     }

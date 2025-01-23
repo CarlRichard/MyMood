@@ -19,7 +19,7 @@ class Cohorte
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Nom = null;  // Champ modifié ici
+    private ?string $nom = null;  // Champ modifié ici
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateCreation = null;
@@ -30,7 +30,7 @@ class Cohorte
     /**
      * @var Collection<int, Utilisateur>
      */
-    #[ORM\ManyToMany(targetEntity: Utilisateur::class, mappedBy: 'groupe')]
+    #[ORM\ManyToMany(targetEntity: Utilisateur::class, mappedBy: 'groupes')]
     private Collection $utilisateurs;
 
     public function __construct()
@@ -45,12 +45,12 @@ class Cohorte
 
     public function getNom(): ?string
     {
-        return $this->Nom;  // getter pour Nom
+        return $this->nom;  // getter pour Nom
     }
 
-    public function setNom(string $Nom): static
+    public function setNom(string $nom): static
     {
-        $this->Nom = $Nom;
+        $this->Nom = $nom;
 
         return $this;
     }

@@ -1,8 +1,6 @@
 security:
     password_hashers:
-        App\Entity\Utilisateur:
-            algorithm: bcrypt
-            cost: 12
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'bcrypt'
 
     providers:
         app_user_provider:
