@@ -204,6 +204,9 @@ h2 {
     gap: 14px;
     margin-top: 22px;
 }
+.container_stagiaires_details {
+    z-index: 4;
+}
 .container_stagiaires input {
     padding: 5px 0 5px 8px;
     color: var(--primary-color);
@@ -288,7 +291,8 @@ h2 {
     background-color: var(--primary-bg-color);
     padding: 20px 14px;
     box-shadow: 2px 2px 8px -2px var(--border-color);
-    margin-top: 8px;
+    margin-top: 15px;
+    margin-left: 0px;
 }
 .container_modal_stagiaires_label_input {
     display: flex;
@@ -510,15 +514,6 @@ h2 {
     font-weight: lighter;
 }
 
-.details {
-    z-index: 2;
-}
-.container_modal_stagiaires {
-    z-index: 2;
-}
-.z-index {
-    z-index: 2;
-}
 
 /*=====RESPONSIVE=====*/
 /*=====DESKTOP=====*/
