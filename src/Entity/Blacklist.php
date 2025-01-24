@@ -16,7 +16,7 @@ class Blacklist
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?bool $EstBlacklist = null;
+    private ?bool $estBlacklist = null;
 
     #[ORM\ManyToOne(inversedBy: 'blacklist')]
     private ?Utilisateur $utilisateur = null;
@@ -28,7 +28,7 @@ class Blacklist
 
     public function isEstBlacklist(): ?bool
     {
-        return $this->EstBlacklist;
+        return $this->estBlacklist;
     }
 
     public function setEstBlacklist(bool $EstBlacklist): static
