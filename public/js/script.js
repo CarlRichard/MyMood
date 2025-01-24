@@ -2,7 +2,7 @@
 const formStagiaire = document.querySelector("#form_stagiaire");
 const inputEmailStagiaire = document.querySelector(".input_email");
 const inputPasswordStagiaire = document.querySelector(".input_password");
-const inputSubmit = document.querySelector(".input_submit");
+const buttonSubmit = document.querySelector(".button_submit");
 
 // Ajout d'un gestionnaire d'événement sur le bouton submit
 formStagiaire.addEventListener("submit", (event) => {
@@ -11,22 +11,25 @@ formStagiaire.addEventListener("submit", (event) => {
     email: inputEmailStagiaire.value,
     password: inputPasswordStagiaire.value,
   };
+  console.log(data);
+  
+})
 
 //   "localhost/api/login"
-  fetch("", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => {
-      response.json();
-    })
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-});
+//   fetch("", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(data),
+//   })
+//     .then((response) => {
+//       response.json();
+//     })
+//     .then((result) => {
+//       console.log(result);
+//     })
+//     .catch((error) => {
+//       console.error(error);
+//     });
+// });

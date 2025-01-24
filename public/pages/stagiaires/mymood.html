@@ -10,18 +10,31 @@
       href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <!-- GOOGLE ICONS -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="../../css/mymood.css" />
+    <link rel="stylesheet" href="../../utils/variables2.css" />
     <!-- JS -->
     <script defer src="../../js/mymood.js"></script>
     <title>MyMood - Mood</title>
   </head>
   <body>
+    <!-- HEADER -->
     <header class="header">
-      <img src="../../assets/logo-mymood.png" alt="Logo du site MyMood" />
-      <button class="header_button">Mon profil</button>
+      <img
+        class="rotating"
+        src="../../assets/logo-mymood.png"
+        alt="Logo du site MyMood"
+      />
+      <button class="header_button"><span class="material-symbols-outlined">
+        person
+        </span>Mon profil</button>
     </header>
     <main>
+      <h1><span>M</span>y<span>M</span>ood</h1>
+      <h2>Ton humeur, notre soutien.</h2>
+      <!-- SECTION DESCRIPTION MY MOOD -->
       <section class="section_description_mymood">
         <p>
           Cet outil est conçu pour vous permettre de communiquer votre Mood.
@@ -37,23 +50,41 @@
           plus proche.
         </p>
       </section>
-
+      <!-- SECTION HUMEUR MY MOOD -->
       <section class="section_humeur_mymood">
-        <div class="humeur_container_appel">
-          <div class="humeur_appel">
-            <span>Appel</span>
-          </div>
+        <div class="humeur_container_button_appel">
+          <a href="#" class="humeur_container_appel">
+            <div class="humeur_appel">
+              <p>SOS<span class="material-symbols-outlined">
+                siren_open
+                </span></p>
+            </div>
+          </a>
+
+          <button class="humeur_button">ENVOYER HUMEUR<span class="material-symbols-outlined">
+            ios_share
+            </span></button>
         </div>
 
         <div class="humeur_container_slide_text">
-          <p>Je me sens mal</p>
-
+          <div class="humeur_container_text">
+            <p><span class="material-symbols-outlined">
+              arrow_left_alt
+              </span>Je vais bien</p>
+            <p>Je vais mal<span class="material-symbols-outlined">
+              arrow_right_alt
+              </span></p>
+          </div>
           <div class="humeur_slider_container">
             <input class="slider" type="range" min="1" max="100" value="50" />
           </div>
-          <p>Tout est OK.</p>
         </div>
       </section>
+
+        <a href="../administration/liste-formation-stagiaires.html"
+        >Lien provoisoir vers la page => Liste formation & Stagiaires</a
+      >
     </main>
+    <footer></footer>
   </body>
 </html>

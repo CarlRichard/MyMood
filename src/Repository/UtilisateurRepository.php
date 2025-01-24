@@ -27,7 +27,8 @@ class UtilisateurRepository extends ServiceEntityRepository implements PasswordU
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', $user::class));
         }
 
-        $user->setPassword($newHashedPassword);
+        // L'utilisateur a déjà son mot de passe haché dans l'entité, donc on n'a pas besoin de le hacher ici.
+        $user->setPassword($newHashedPassword);  // Vous passez ici un mot de passe déjà haché
         $this->getEntityManager()->persist($user);
         $this->getEntityManager()->flush();
     }
