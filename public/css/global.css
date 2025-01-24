@@ -13,7 +13,7 @@ body {
     height: 100vh;
     text-decoration: none;
     list-style-type: none;
-    background-color: var(--seventh-bg-color);   /* var(--white-bg) */
+    background-color: var(--seventh-bg-color); 
     font-family: var(--ff-body);
     font-size: var(--fs-12);
     font-weight: var(--fw-regular);
@@ -23,7 +23,7 @@ header {
     height: 74px;
     width: 100vw;
     padding: 0.5em;
-    background-color: var(--primary-bg-color);   /* var(--dark-blue-bg) */ 
+    background-color: var(--primary-bg-color); 
     display: flex; 
     align-items: center; 
     
@@ -41,7 +41,7 @@ header {
     border-radius: 7px;
     padding: 5px 15px;
     border: var(--button-border);
-    color: var(--secondary-color);   /* var(--red-color) */
+    color: var(--secondary-color);  
     cursor: pointer;
 }
 
@@ -76,8 +76,6 @@ header {
     height: 28px;
     font-size: var(--fs-12);
 }
-
-
 
 /*=====RESPONSIVE=====*/
 
