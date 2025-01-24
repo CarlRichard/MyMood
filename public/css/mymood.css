@@ -182,21 +182,21 @@ h2 {
 }
 .humeur_button {
   height: fit-content;
-  background-color: #38b000;
+  background-color: #023e8a;
   color: var(--tertiary-color);
   padding: 12px 14px;
   border-radius: 7px;
   cursor: pointer;
-  box-shadow: 2px 2px 8px -2px #51ff00;
+  box-shadow: 2px 2px 8px -2px var(--secondary-bg-color);
   transition: 0.2s;
-  border: 1px solid #51ff00;
+  border: 1px solid var(--secondary-bg-color);
   display: flex;
   align-items: center;
   gap: 5px;
 }
 .humeur_button:hover {
   scale: 1.03;
-  background-color: #3dbe01;
+  background-color: #004aaa;
 }
 .humeur_button > span {
   font-size: 18px;
