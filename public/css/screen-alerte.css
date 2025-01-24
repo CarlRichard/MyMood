@@ -1,15 +1,6 @@
 /*=====IMPORTATION DES VARIABLES=====*/
 @import url("../utils/variables.css");
 
-/*=====RESET CSS=====*/
-* {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  list-style-type: none;
-  box-sizing: border-box;
-  font-family: "Roboto", serif;
-}
 
 /*=====DESKTOP=====*/
 header {
@@ -67,11 +58,6 @@ main {
   text-align: center;
   padding: 0 10px;
   color:  var(--tertiary-color);
-  font-family: "Roboto", serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-size: 16px;
-  font-weight: 400;
 }
 
 .main_button {
@@ -83,14 +69,32 @@ main {
 
 .button_submit {
   width: 118px;
-  height: 41px;
-  border-radius: 7px;
+  height: 44px;
+  border-radius: 5px;
+  background-color: var(--tertiary-color);
   color: var(--secondary-color);
-  border: 1px solid var(--primary-bg-color);
-  font-style: normal;
-  font-size: 16px;
-  font-weight: 500;
+  text-align: center;
   cursor: pointer;
+  transition: 0.2s;
+  border: 1px solid var(--primary-bg-color);
+  box-shadow: 2px 2px 8px -2px var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.button_submit:hover {
+  scale: 1.02;
+  background-color: var(--button-hover-bg-color);
+  font-weight: 600;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 
