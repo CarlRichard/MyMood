@@ -13,32 +13,33 @@
 
 /*=====DESKTOP=====*/
 header {
-  background-color: var(--primary-bg-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 77px;
   }
 
-.header_img {
-  width: 90px;
-  object-fit: cover;
+.rotating {
   margin-left: 10px;
-  margin-top: 5px;
 }
 
 .header_button {
-  width: 115px;
-  height: 35px;
-  margin-right: 13px;
-  border: none;
+  padding: 12px 40px;
   border-radius: 4px;
-  background: var(--tertiary-color);
+  background-color: var(--tertiary-color);
   color: var(--secondary-color);
-  font-style: normal;
-  font-size: 14px;
+  margin-right: 25px;
+  box-shadow: 2px 2px 8px -2px var(--border-color);
+  border: 1px solid var(--secondary-bg-color);
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.header_button:hover {
+  scale: 1.04;
+  background-color: var(--button-hover-bg-color);
   font-weight: 500;
-  cursor: pointer;
 }
 
 main {
@@ -101,7 +102,18 @@ main {
     height: 343px;
     transition: 0.2s;
   }
+ 
+  .header_button {
+    font-optical-sizing: auto;
+    font-size: 13px;
+    font-weight: 400;
+  }
 
+  .button_submit {
+    font-optical-sizing: auto;
+    font-size: 13px;
+    font-weight: 400;
+  }
 }
 
 /*=====SMARTPHONE=====*/
