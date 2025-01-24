@@ -25,14 +25,9 @@
   --fs-24: 1.5rem;
   
   /* Font-weight */
-  --fw-h1: 500;
+  --fw-title: 500;
   --fw-body: 400;
 
   /* Borders */
   --button-border: 1px solid var(--primary-bg-color);
-
-  /* ????????????? => suggestion (à voir si utile)
-  --little-card-border: 1px solid #ddd; 
-  --big-card-border: 1px solid var(--secondary-color); 
-  ????????????? */
 }
