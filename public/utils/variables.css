@@ -13,39 +13,21 @@
   --sixth-bg-color: #FF6B6E;
   --seventh-bg-color: #EFF2FF;
 
-  /* ???????? => suggestion (me semble plus parlant)
-  --black-color: #000;
-  --red-color: #D91E41;
-  --white-color: #FFF;
-
-  --dark-blue-bg: #1E1C59;
-  --light-blue-bg: #64bceb;
-  --yellow-bg: #cfc50f;
-  --green-bg: #4adc54;
-  --red-bg: #d20426;
-  --orange-bg: #FF6B6E;
-  --white-bg: #EFF2FF; 
-  ???????? */
-
   /* Font-family */
-  --ff-body: Inter, sans-sérif;
+  --ff-title: "Pacifico", serif;
+  --ff-body: "Roboto", sans-sérif;
 
   /* Font-size */
   --fs-12: 0.8rem;
   --fs-14: 0.9rem;
-  /* --fs-15: 0.938rem; */
   --fs-16: 1rem;
   --fs-20: 1.25rem;
   --fs-24: 1.5rem;
   
   /* Font-weight */
-  --fw-regular: 400;
+  --fw-title: 500;
+  --fw-body: 400;
 
   /* Borders */
   --button-border: 1px solid var(--primary-bg-color);
-
-  /* ????????????? => suggestion (à voir si utile)
-  --little-card-border: 1px solid #ddd; 
-  --big-card-border: 1px solid var(--secondary-color); 
-  ????????????? */
 }
