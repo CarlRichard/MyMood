@@ -1,132 +1,13 @@
-/*=====IMPORTATION DES VARIABLES=====*/
-@import url("../utils/variables.css");
-
-
 /*=====DESKTOP=====*/
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  }
+/* HEADER */
 
-.rotating {
-  margin-left: 10px;
-}
-
-.header_button {
-  padding: 12px 40px;
-  border-radius: 4px;
-  background-color: var(--tertiary-color);
-  color: var(--secondary-color);
-  margin-right: 25px;
-  box-shadow: 2px 2px 8px -2px var(--border-color);
-  border: 1px solid var(--secondary-bg-color);
-  transition: 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
-.header_button:hover {
-  scale: 1.04;
-  background-color: var(--button-hover-bg-color);
-  font-weight: 500;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.feedback {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--primary-bg-color);
-  width: 500px;
-  height: 343px;
-  margin-top: 102px;
-  border-radius: 15px;
-}
-
-.feedback p {
-  width: 248px;
-  height: 194px;
-  align-content: center;
-  text-align: center;
-  padding: 0 10px;
-  color:  var(--tertiary-color);
-}
-
-.main_button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 34px;
-}
-
-.button_submit {
-  width: 118px;
-  height: 44px;
-  border-radius: 5px;
-  background-color: var(--tertiary-color);
-  color: var(--secondary-color);
-  text-align: center;
-  cursor: pointer;
-  transition: 0.2s;
-  border: 1px solid var(--primary-bg-color);
-  box-shadow: 2px 2px 8px -2px var(--border-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
-
-.button_submit:hover {
-  scale: 1.02;
-  background-color: var(--button-hover-bg-color);
-  font-weight: 600;
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
+/* MAIN */
+/* SECTION NOTIF */
 
 /*=====TABLET=====*/
 @media (max-width: 768px) {
-
-  .feedback {
-    width: 410px;
-    height: 343px;
-    transition: 0.2s;
-  }
- 
-  .header_button {
-    font-optical-sizing: auto;
-    font-size: 13px;
-    font-weight: 400;
-  }
-
-  .button_submit {
-    font-optical-sizing: auto;
-    font-size: 13px;
-    font-weight: 400;
-  }
 }
 
 /*=====SMARTPHONE=====*/
 @media (max-width: 425px) {
-  
-  .feedback {
-    width: 311px;
-    height: 343px;
-    transition: 0.2s;
-    max-width: 100%;
-  }
 }
