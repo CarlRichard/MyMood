@@ -15,11 +15,10 @@ body {
     list-style-type: none;
     background-color: var(--seventh-bg-color); 
     font-family: var(--ff-body);
-    font-size: var(--fs-large-text);
-    font-weight: var(--fw-body);
+    font-size: var(--fs-12);
+    font-weight: var(--fw-regular);
 }
 
-/* header */
 header {
     height: 74px;
     width: 100vw;
@@ -39,8 +38,6 @@ header {
 
 /* buttons */
 .btn {   /* tous les boutons */
-    font-family: var(--ff-body);
-    font-weight: var(--fw-body);
     border-radius: 7px;
     padding: 5px 15px;
     border: var(--button-border);
@@ -59,63 +56,26 @@ header {
 .header-btn {
     width: 172px;
     height: 42px;
-    font-size: var(--fs-middle-text);
 }
 
 /* main buttons */
 .main-btn {
     width: 118px;
     height: 41px;
-    font-size: var(--fs-large-text);
+    font-size: var(--fs-14);
 }
 
 /* modal buttons */
 .big-modal-btn {
     width: 162px;
     height: 41px;
-    font-size: var(--fs-large-text);
+    font-size: var(--fs-12);
 }
 .little-modal-btn {
     width: 162px;
     height: 28px;
-    font-size: var(--fs-large-text);
+    font-size: var(--fs-12);
 }
-
-/* titles */
-h1, h2 {
-    font-family: var(--ff-title);
-    font-weight: var(--fw-title);
-}
-h1 {
-    font-size: var(--fs-h1);
-}
-h1 span {
-    text-decoration: underline;
-    color: var(--secondary-color);
-}
-h2 {
-    font-size: var(--fs-h2);
-}
-h3 {
-    font-size: var(--fs-h3);
-}
-h4 {
-    font-size: var(--fs-h4);
-}
-
-/* inputs */
-input::placeholder, input:focus {
-    font-family: var(--ff-body);
-    font-size: var(--fs-large-text);
-    font-weight: var(--fw-body);
-}
-
-/* footer */
-/* footer {
-    height: 50px;
-    background-color: var(--primary-bg-color);
-} */
-
 
 /*=====RESPONSIVE=====*/
 
