@@ -1,12 +1,13 @@
-// SELECTIONNER MES INPUTS ET MON BUTTON
+// SELECTIONNER MES INPUTS, MON BUTTON & MA SECTION
 const formStagiaire = document.querySelector("#form_stagiaire");
 const inputEmailStagiaire = document.querySelector(".input_email");
 const inputPasswordStagiaire = document.querySelector(".input_password");
 const buttonSubmit = document.querySelector(".button_submit");
+const main = document.querySelector("main");
 
-// RECUPERER LA VALEUR DES INPUTS QUAND ON CLICK SUR LE BUTTON
+// RECUPERER LA VALEUR DES INPUTS ET L'ENVOYER QUAND ON CLICK SUR LE BUTTON
 formStagiaire.addEventListener("submit", (event) => {
-  event.preventDefault();
+  // event.preventDefault();
 
   // CONSTRUCTION DE L'OBJET A ENVOYER
   const data = {
@@ -16,7 +17,7 @@ formStagiaire.addEventListener("submit", (event) => {
   console.log(data);
 
   // ENVOI DES DONNEES AVEC FETCH
-  fetch("/login_check", {
+  fetch("localhost/login_check", {
     // méthode POST pour envoyer les données
     method: "POST",
     headers: {
@@ -25,7 +26,7 @@ formStagiaire.addEventListener("submit", (event) => {
     // convertir les données en JSON
     body: JSON.stringify(data),
   })
-  .then((response) => response.json())
+    .then((response) => response.json())
     .then((result) => {
       console.log("Données envoyées avec succès :", result);
       try {
@@ -35,7 +36,14 @@ formStagiaire.addEventListener("submit", (event) => {
         // Rediriger vers une autre page
         window.location.href = "../pages/stagiaires/mymood.html";
       } catch (error) {
-        console.error("Erreur lors du traitement du token ou de la redirection :", error);
+        console.error(
+          "Erreur lors du traitement du token ou de la redirection :",
+          error
+        );
+        const errorMessage = document.createElement("p");
+        errorMessage.classList.add('message_error');
+        errorMessage.textContent = "Identifiant ou mots de passe incorrect.";
+        main.appendChild(errorMessage);
       }
     })
     .catch((error) => {
