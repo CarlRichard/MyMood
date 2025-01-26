@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity;
 
 use App\Repository\AlerteRepository;
@@ -6,41 +7,59 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
-use Symfony\Component\Serializer\Attribute\Groups;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
+use ApiPlatform\Metadata\Delete;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AlerteRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['alerte:read']],
+    denormalizationContext: ['groups' => ['alerte:write']],
+    operations: [
+        new Get(),
+        new Post(),
+        new Put(),
+        new Delete()
+    ]
+)]
 class Alerte
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['alerte:read'])]
     private ?int $id = null;
 
-    #[ORM\OneToMany(targetEntity: Historique::class, mappedBy: 'alerte', cascade: ['persist', 'remove'])]
-    private Collection $historiques;
-
-    #[ORM\Column(type: "datetime")]
-    #[Groups(['alerte:read'])]
+    #[ORM\Column(type: 'datetime')]
+    #[Groups(['alerte:read', 'alerte:write'])]
     private ?\DateTimeInterface $dateCreation = null;
 
     #[ORM\Column(length: 255)]
     #[Groups(['alerte:read', 'alerte:write'])]
-    private ?string $statut = 'EN_COURS'; // Valeur par défaut
+    #[Assert\NotBlank(message: 'Le statut est obligatoire.')]
+    #[Assert\Choice(
+        choices: ['EN_COURS', 'RESOLUE', 'ANNULEE'],
+        message: 'Le statut doit être EN_COURS, RESOLUE ou ANNULEE.'
+    )]
+    private ?string $statut = 'EN_COURS';
 
-
-    //stock l'id non null
-    #[ORM\Column(type: "integer")]
-    #[Groups(['alerte:read'])]
+    #[ORM\Column(type: 'integer')]
+    #[Groups(['alerte:read', 'alerte:write'])]
+    #[Assert\NotNull(message: 'L\'ID utilisateur est obligatoire.')]
     private ?int $userId = null;
 
+    #[ORM\OneToMany(mappedBy: 'alerte', targetEntity: Historique::class, cascade: ['persist', 'remove'])]
+    #[Groups(['alerte:read'])]
+    private Collection $historiques;
 
-    // date de création à aujourd'hui si null
     #[ORM\PrePersist]
     public function setDefaultDateCreation(): void
     {
         if ($this->dateCreation === null) {
-            $this->dateCreation = new \DateTime(); // Définit la date actuelle si elle n'est pas spécifiée
+            $this->dateCreation = new \DateTime();
         }
     }
 
@@ -48,6 +67,8 @@ class Alerte
     {
         $this->historiques = new ArrayCollection();
     }
+
+    // Getters et setters
 
     public function getId(): ?int
     {
@@ -59,7 +80,7 @@ class Alerte
         return $this->dateCreation;
     }
 
-    public function setDateCreation(\DateTimeInterface $dateCreation): static
+    public function setDateCreation(?\DateTimeInterface $dateCreation): static
     {
         $this->dateCreation = $dateCreation;
         return $this;
@@ -101,7 +122,7 @@ class Alerte
 
         return $this;
     }
-    
+
     public function removeHistorique(Historique $historique): static
     {
         if ($this->historiques->removeElement($historique)) {
