@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 use App\Entity\Utilisateur;
@@ -22,12 +21,14 @@ class UtilisateurController extends AbstractController
         $data = json_decode($request->getContent(), true);
     
         // Vérification des paramètres requis
-        if (!isset($data['email'], $data['password'], $data['role'], $data['nom'], $data['prenom'])) {
-            return new JsonResponse(['message' => 'Email, mot de passe, rôle, nom et prénom requis'], 400);
+        if (!isset($data['email'], $data['password'], $data['nom'], $data['prenom'])) {
+            return new JsonResponse(['message' => 'Email, mot de passe, nom et prénom requis'], 400);
         }
     
-        // Vérification du rôle
-        $role = $data['role'];  
+        // Si aucun rôle n'est spécifié, assigner le rôle par défaut 'ROLE_ETUDIANT'
+        $role = isset($data['role']) ? $data['role'] : 'ROLE_ETUDIANT';
+    
+        // Vérification du rôle si il est spécifié
         if (!in_array($role, ['ROLE_ETUDIANT', 'ROLE_SUPERVISEUR', 'ROLE_ADMIN'])) {
             return new JsonResponse(['message' => 'Rôle invalide. Choisissez parmi ROLE_ETUDIANT, ROLE_SUPERVISEUR, ROLE_ADMIN.'], 400);
         }
@@ -37,23 +38,20 @@ class UtilisateurController extends AbstractController
         $utilisateur->setNom($data['nom']);
         $utilisateur->setPrenom($data['prenom']);
 
-    
         // Hachage du mot de passe
         $hashedPassword = $passwordHasher->hashPassword($utilisateur, $data['password']);
         $utilisateur->setPassword($hashedPassword);
     
-        // Assigner le rôle spécifié
+        // Assigner le rôle
         $utilisateur->setRoles([$role]);
     
-        // Persister l'utilisateur*
-        print_r($utilisateur);
+        // Persister l'utilisateur
         $entityManager->persist($utilisateur);
         $entityManager->flush();
     
         return new JsonResponse(['message' => 'Utilisateur créé avec succès'], 201);
     }
     
-    //modifier un utilisateur
     #[Route('/utilisateur/{id}', name: 'update_user', methods: ['PUT'])]
     public function updateUser(
         int $id,
@@ -72,16 +70,19 @@ class UtilisateurController extends AbstractController
         }
     
         // Vérification des paramètres requis
-        if (!isset($data['email'], $data['password'], $data['role'], $data['nom'], $data['prenom'])) {
-            return new JsonResponse(['message' => 'Email, mot de passe, rôle, nom et prénom requis'], 400);
+        if (!isset($data['email'], $data['password'], $data['nom'], $data['prenom'])) {
+            return new JsonResponse(['message' => 'Email, mot de passe, nom et prénom requis'], 400);
         }
     
+        // Si aucun rôle n'est spécifié, utiliser le rôle actuel (ou le rôle par défaut)
+        $role = isset($data['role']) ? $data['role'] : $utilisateur->getRoles()[0];
+    
         // Vérification du rôle
-        $role = $data['role'];
         if (!in_array($role, ['ROLE_ETUDIANT', 'ROLE_SUPERVISEUR', 'ROLE_ADMIN'])) {
             return new JsonResponse(['message' => 'Rôle invalide. Choisissez parmi ROLE_ETUDIANT, ROLE_SUPERVISEUR, ROLE_ADMIN.'], 400);
         }
     
+        // Mise à jour des informations de l'utilisateur
         $utilisateur->setEmail($data['email']);
         $utilisateur->setNom($data['nom']);
         $utilisateur->setPrenom($data['prenom']);
@@ -90,7 +91,7 @@ class UtilisateurController extends AbstractController
         $hashedPassword = $passwordHasher->hashPassword($utilisateur, $data['password']);
         $utilisateur->setPassword($hashedPassword);
     
-        // Assigner le rôle spécifié
+        // Assigner le rôle
         $utilisateur->setRoles([$role]);
     
         // Persister l'utilisateur
@@ -99,5 +100,4 @@ class UtilisateurController extends AbstractController
     
         return new JsonResponse(['message' => 'Utilisateur mis à jour avec succès'], 200);
     }
-
 }

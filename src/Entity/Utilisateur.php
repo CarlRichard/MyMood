@@ -29,23 +29,23 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['utilisateur:read', 'cohorte:read'])] // Groupe pour l'ID
+    #[Groups(['utilisateur:read', 'cohorte:read'])] 
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
-    #[Groups(['utilisateur:read'])] // Groupe pour l'email
+    #[Groups(['utilisateur:read'])] 
     private ?string $email = null;
 
     #[ORM\Column]
-    #[Groups(['utilisateur:read'])] // Groupe pour les rôles
+    #[Groups(['utilisateur:read'])] 
     private array $roles = ["ROLE_ETUDIANT"];
 
     #[ORM\Column(length: 255)]
-    #[Groups(['utilisateur:read', 'cohorte:read'])] // Groupe pour le nom
+    #[Groups(['utilisateur:read', 'cohorte:read'])] 
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['utilisateur:read', 'cohorte:read'])] // Groupe pour le prénom
+    #[Groups(['utilisateur:read', 'cohorte:read'])] 
     private ?string $prenom = null;
 
     #[ORM\Column]
@@ -55,8 +55,8 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      * @var Collection<int, Cohorte>
      */
     #[ORM\ManyToMany(targetEntity: Cohorte::class, inversedBy: 'utilisateurs')]
-    #[ORM\JoinTable(name: 'utilisateur_cohorte')] // Vous pouvez personnaliser le nom de la table de jointure si nécessaire
-    #[Groups(['utilisateur:read'])] // Ajoutez ce groupe pour les groupes (cohortes) de l'utilisateur
+    #[ORM\JoinTable(name: 'utilisateur_cohorte')]  
+    #[Groups(['utilisateur:read'])] 
     private Collection $groupes;
 
     public function __construct()
@@ -137,7 +137,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getUserIdentifier(): string
     {
-        // Symfony >= 5.3 utilise getUserIdentifier.
+        // surement une une methode d'ancienne version symfony
         return $this->email;
     }
 
