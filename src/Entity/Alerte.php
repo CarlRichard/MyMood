@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Entity;
 
 use App\Repository\AlerteRepository;
@@ -7,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: AlerteRepository::class)]
 #[ApiResource]
@@ -17,14 +17,32 @@ class Alerte
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: 'datetime')]
-    private ?\DateTimeInterface $dateEnvoi = null;
-
-    #[ORM\Column]
-    private ?int $statut = null;
-
     #[ORM\OneToMany(targetEntity: Historique::class, mappedBy: 'alerte', cascade: ['persist', 'remove'])]
     private Collection $historiques;
+
+    #[ORM\Column(type: "datetime")]
+    #[Groups(['alerte:read'])]
+    private ?\DateTimeInterface $dateCreation = null;
+
+    #[ORM\Column(length: 255)]
+    #[Groups(['alerte:read', 'alerte:write'])]
+    private ?string $statut = 'EN_COURS'; // Valeur par défaut
+
+
+    //stock l'id non null
+    #[ORM\Column(type: "integer")]
+    #[Groups(['alerte:read'])]
+    private ?int $userId = null;
+
+
+    // date de création à aujourd'hui si null
+    #[ORM\PrePersist]
+    public function setDefaultDateCreation(): void
+    {
+        if ($this->dateCreation === null) {
+            $this->dateCreation = new \DateTime(); // Définit la date actuelle si elle n'est pas spécifiée
+        }
+    }
 
     public function __construct()
     {
@@ -36,25 +54,36 @@ class Alerte
         return $this->id;
     }
 
-    public function getDateEnvoi(): ?\DateTimeInterface
+    public function getDateCreation(): ?\DateTimeInterface
     {
-        return $this->dateEnvoi;
+        return $this->dateCreation;
     }
 
-    public function setDateEnvoi(\DateTimeInterface $DateEnvoi): static
+    public function setDateCreation(\DateTimeInterface $dateCreation): static
     {
-        $this->DateEnvoi = $DateEnvoi;
+        $this->dateCreation = $dateCreation;
         return $this;
     }
 
-    public function getStatut(): ?int
+    public function getStatut(): ?string
     {
         return $this->statut;
     }
 
-    public function setStatut(int $Statut): static
+    public function setStatut(string $statut): static
     {
-        $this->Statut = $Statut;
+        $this->statut = $statut;
+        return $this;
+    }
+
+    public function getUserId(): ?int
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(int $userId): static
+    {
+        $this->userId = $userId;
         return $this;
     }
 
@@ -72,7 +101,7 @@ class Alerte
 
         return $this;
     }
-
+    
     public function removeHistorique(Historique $historique): static
     {
         if ($this->historiques->removeElement($historique)) {
