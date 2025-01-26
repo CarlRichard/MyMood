@@ -93,6 +93,17 @@ input::placeholder {
   font-weight: lighter;
 }
 
+.section_error_msg {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  color: red;
+}
+.message_error {
+  font-size: 14px;
+  text-align: center;
+}
+
 /* FOOTER */
 footer {
   position: absolute;

@@ -80,6 +80,11 @@ h2 {
     box-shadow: 2px 2px 8px -2px var(--border-color);
     margin-top: 17px;
 }
+.container_formations_label_input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 .container_label_input_formation {
     display: flex;
     align-items: center;

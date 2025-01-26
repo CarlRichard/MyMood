@@ -3,11 +3,39 @@ const formStagiaire = document.querySelector("#form_stagiaire");
 const inputEmailStagiaire = document.querySelector(".input_email");
 const inputPasswordStagiaire = document.querySelector(".input_password");
 const buttonSubmit = document.querySelector(".button_submit");
+const sectionError = document.querySelector(".section_error_msg");
 const main = document.querySelector("main");
 
 // RECUPERER LA VALEUR DES INPUTS ET L'ENVOYER QUAND ON CLICK SUR LE BUTTON
 formStagiaire.addEventListener("submit", (event) => {
-  // event.preventDefault();
+
+  // initialisation des tableaux des messages d'erreur
+  let errorMessageEmail = "";
+  let errorMessageMp = "";
+
+  // si des erreurs, les afficher et arrêter l'envoi du formulaire
+  if (!inputEmailStagiaire.value) {
+    errorMessageEmail += `Veuillez entrer votre email !`;
+  }
+  if (!inputPasswordStagiaire.value) {
+    errorMessageMp += `Veuillez entrer votre mots de passe !`;
+  }
+  if (errorMessageEmail) {
+    const errorElement = document.createElement("p");
+    errorElement.classList.add("message_error");
+    errorElement.textContent = errorMessageEmail;
+    sectionError.appendChild(errorElement);
+    main.appendChild(sectionError);
+  }
+  if (errorMessageMp) {
+    const errorElement2 = document.createElement("p");
+    errorElement2.classList.add("message_error");
+    errorElement2.textContent = errorMessageMp;
+    sectionError.appendChild(errorElement2);
+    main.appendChild(sectionError);
+    return;
+  } 
+  
 
   // CONSTRUCTION DE L'OBJET A ENVOYER
   const data = {
@@ -23,17 +51,17 @@ formStagiaire.addEventListener("submit", (event) => {
     headers: {
       "Content-Type": "application/json",
     },
-    // convertir les données en JSON
+    // convertion des données en JSON
     body: JSON.stringify(data),
   })
     .then((response) => response.json())
     .then((result) => {
       console.log("Données envoyées avec succès :", result);
       try {
-        // Stocker le token dans localStorage
+        // stocker le token dans localStorage
         localStorage.setItem("tokenUser", result.tokenUser);
 
-        // Rediriger vers une autre page
+        // redirection vers la page mymood
         window.location.href = "../pages/stagiaires/mymood.html";
       } catch (error) {
         console.error(
