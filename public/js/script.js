@@ -52,7 +52,7 @@ formStagiaire.addEventListener("submit", (event) => {
   console.log(data);
 
   // ENVOI DES DONNEES AVEC FETCH
-  fetch("localhost/login_check", {
+  fetch("/api/login_check", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
