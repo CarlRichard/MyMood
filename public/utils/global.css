@@ -1,3 +1,6 @@
+/*=====IMPORTATION DES VARIABLES=====*/
+@import url("../utils/variables.css");
+
 /*=====RESET CSS=====*/
 *, ::before, ::after {
     margin: 0;
@@ -50,8 +53,8 @@ body::-webkit-scrollbar-thumb {
 
 /* header */
 header {
-    height: 74px;
-    width: 100vw;
+    height: 95px;
+    width: 100%;
     padding: 0.5em;
     background-color: var(--primary-bg-color); 
     display: flex; 
@@ -60,7 +63,7 @@ header {
 
 /* logo */
 .logo-container {   /* div container du logo */
-    height: 80%;
+    height: 120%;
     margin-left: 4vw;
 }
 .logo {   /* img classe logo */
