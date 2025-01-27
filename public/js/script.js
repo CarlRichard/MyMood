@@ -21,7 +21,7 @@ formStagiaire.addEventListener("submit", (event) => {
     errorMessageEmail += "Veuillez entrer votre email !";
   }
   if (!inputPasswordStagiaire.value) {
-    errorMessageMp += "Veuillez entrer votre mots de passe !";
+    errorMessageMp += "Veuillez entrer votre mot de passe !";
   }
 
   // Affichage des messages d'erreur si nécessaire
@@ -64,16 +64,23 @@ formStagiaire.addEventListener("submit", (event) => {
       console.log("Données envoyées avec succès :", result);
       try {
         // Stocker le token dans localStorage
-        localStorage.setItem("tokenUser", result.token);
+        const token = result.token;
 
-        // Redirection vers la page mymood
+        // Vérification de la longueur du token
+        if (!token || token.length < 2) {
+          throw new Error("Token invalide");
+        }
+
+        localStorage.setItem("tokenUser", token);
+
+        // Redirection vers la page mymood si le token est valide
         window.location.href = "../pages/stagiaires/mymood.html";
       } catch (error) {
         console.error("Erreur lors du traitement du token ou de la redirection :", error);
-        const errorMessage = document.createElement("p");
-        errorMessage.classList.add('message_error');
-        errorMessage.textContent = "Identifiant ou mot de passe incorrect.";
-        main.appendChild(errorMessage);
+        const errorElement3 = document.createElement("p");
+        errorElement3.classList.add('message_error');
+        errorElement3.textContent = "Identifiant ou mot de passe incorrect.";
+        sectionError.appendChild(errorElement3);
       }
     })
     .catch((error) => {
