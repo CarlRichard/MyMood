@@ -1,37 +1,53 @@
 <?php
-
 namespace App\Entity;
 
-use App\Repository\UtilisateurRepository;
+use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
-use ApiPlatform\Metadata\ApiResource;
+use App\Entity\Cohorte;
+use Symfony\Component\Serializer\Annotation\Groups;
 
-#[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
-#[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
-#[ApiResource]
+#[ORM\Entity]
+#[ApiResource(
+    operations: [
+        new \ApiPlatform\Metadata\GetCollection(),
+        new \ApiPlatform\Metadata\Get(),
+        new \ApiPlatform\Metadata\Delete(),
+        new \ApiPlatform\Metadata\Post(
+            uriTemplate: '/utilisateurs',
+            controller: 'App\Controller\UtilisateurController::createUser'
+        ),
+    ],
+    normalizationContext: ['groups' => ['utilisateur:read']], // Groupe global pour la lecture des utilisateurs
+)]
+#[ORM\Table(name: 'utilisateur')]
 class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['utilisateur:read', 'cohorte:read'])] 
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Groups(['utilisateur:read'])] 
     private ?string $email = null;
 
-    /**
-     * @var string The Utilisateur role
-     */
-    #[ORM\Column(type: 'string')]
-    private ?string $roles = 'ROLE_USER'; // Valeur par défaut 'ROLE_USER'
+    #[ORM\Column]
+    #[Groups(['utilisateur:read'])] 
+    private array $roles = ["ROLE_ETUDIANT"];
 
-    /**
-     * @var string The hashed password
-     */
+    #[ORM\Column(length: 255)]
+    #[Groups(['utilisateur:read', 'cohorte:read'])] 
+    private ?string $nom = null;
+
+    #[ORM\Column(length: 255)]
+    #[Groups(['utilisateur:read', 'cohorte:read'])] 
+    private ?string $prenom = null;
+
     #[ORM\Column]
     private ?string $password = null;
 
@@ -39,21 +55,13 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      * @var Collection<int, Cohorte>
      */
     #[ORM\ManyToMany(targetEntity: Cohorte::class, inversedBy: 'utilisateurs')]
-    private Collection $groupe;
-
-    /**
-     * @var Collection<int, Blacklist>
-     */
-    #[ORM\OneToMany(targetEntity: Blacklist::class, mappedBy: 'utilisateur')]
-    private Collection $blacklist;
-
-    #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
-    private ?Alerte $alerte = null;
+    #[ORM\JoinTable(name: 'utilisateur_cohorte')]  
+    #[Groups(['utilisateur:read'])] 
+    private Collection $groupes;
 
     public function __construct()
     {
-        $this->groupe = new ArrayCollection();
-        $this->blacklist = new ArrayCollection();
+        $this->groupes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -66,131 +74,93 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->email;
     }
 
-    public function setEmail(string $email): static
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 
         return $this;
     }
 
-    /**
-     * A visual identifier that represents this Utilisateur.
-     *
-     * @see UserInterface
-     */
-    public function getUserIdentifier(): string
-    {
-        return (string) $this->email;
-    }
-
-    /**
-     * @see UserInterface
-     *
-     * @return array<string> Le tableau contient un seul rôle
-     */
     public function getRoles(): array
     {
-        return [$this->roles]; // Retourne un tableau avec un seul rôle
+        return $this->roles;
     }
 
-    /**
-     * @param string $role Le rôle de l'utilisateur
-     */
-    public function setRoles(string $role): static
+    public function setRoles(array $roles): self
     {
-        $this->roles = $role;
+        $this->roles = $roles;
 
         return $this;
     }
 
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
     public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    public function setPassword(string $password): static
+    public function setPassword(string $password): self
     {
         $this->password = $password;
 
         return $this;
     }
 
-    /**
-     * Removes sensitive data from the user.
-     *
-     * @see UserInterface
-     */
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(?string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(?string $prenom): self
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    // Méthodes requises par UserInterface
     public function eraseCredentials(): void
     {
-        // Clear temporary, sensitive data if needed.
-        // Example: $this->plainPassword = null;
+        // Si des données sensibles sont temporairement stockées, nettoyez-les ici.
+    }
+
+    public function getUserIdentifier(): string
+    {
+        // surement une une methode d'ancienne version symfony
+        return $this->email;
     }
 
     /**
      * @return Collection<int, Cohorte>
      */
-    public function getGroupe(): Collection
+    public function getGroupes(): Collection
     {
-        return $this->groupe;
+        return $this->groupes;
     }
 
-    public function addGroupe(Cohorte $groupe): static
+    public function addGroupe(Cohorte $groupe): self
     {
-        if (!$this->groupe->contains($groupe)) {
-            $this->groupe->add($groupe);
+        if (!$this->groupes->contains($groupe)) {
+            $this->groupes->add($groupe);
         }
 
         return $this;
     }
 
-    public function removeGroupe(Cohorte $groupe): static
+    public function removeGroupe(Cohorte $groupe): self
     {
-        $this->groupe->removeElement($groupe);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Blacklist>
-     */
-    public function getBlacklist(): Collection
-    {
-        return $this->blacklist;
-    }
-
-    public function addBlacklist(Blacklist $blacklist): static
-    {
-        if (!$this->blacklist->contains($blacklist)) {
-            $this->blacklist->add($blacklist);
-            $blacklist->setUtilisateur($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBlacklist(Blacklist $blacklist): static
-    {
-        if ($this->blacklist->removeElement($blacklist)) {
-            // set the owning side to null (unless already changed)
-            if ($blacklist->getUtilisateur() === $this) {
-                $blacklist->setUtilisateur(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getAlerte(): ?Alerte
-    {
-        return $this->alerte;
-    }
-
-    public function setAlerte(?Alerte $alerte): static
-    {
-        $this->alerte = $alerte;
+        $this->groupes->removeElement($groupe);
 
         return $this;
     }

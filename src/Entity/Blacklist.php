@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Entity;
 
 use App\Repository\BlacklistRepository;
@@ -15,27 +14,17 @@ class Blacklist
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?bool $EstBlacklist = null;
-
-    #[ORM\ManyToOne(inversedBy: 'blacklist')]
+    #[ORM\ManyToOne(targetEntity: Utilisateur::class)]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Utilisateur $utilisateur = null;
+
+    #[ORM\ManyToOne(targetEntity: Utilisateur::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Utilisateur $superviseur = null; // Ajout de la relation avec le superviseur
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function isEstBlacklist(): ?bool
-    {
-        return $this->EstBlacklist;
-    }
-
-    public function setEstBlacklist(bool $EstBlacklist): static
-    {
-        $this->EstBlacklist = $EstBlacklist;
-
-        return $this;
     }
 
     public function getUtilisateur(): ?Utilisateur
@@ -46,7 +35,17 @@ class Blacklist
     public function setUtilisateur(?Utilisateur $utilisateur): static
     {
         $this->utilisateur = $utilisateur;
+        return $this;
+    }
 
+    public function getSuperviseur(): ?Utilisateur
+    {
+        return $this->superviseur;
+    }
+
+    public function setSuperviseur(?Utilisateur $superviseur): static
+    {
+        $this->superviseur = $superviseur;
         return $this;
     }
 }

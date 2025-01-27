@@ -5,84 +5,120 @@ namespace App\Entity;
 use App\Repository\AlerteRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
+use ApiPlatform\Metadata\Delete;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AlerteRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    normalizationContext: ['groups' => ['alerte:read']],
+    denormalizationContext: ['groups' => ['alerte:write']],
+    operations: [
+        new Get(),
+        new Post(),
+        new Put(),
+        new Delete()
+    ]
+)]
+
+#[ORM\HasLifecycleCallbacks]
 class Alerte
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['alerte:read'])]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $DateEnvoi = null;
+    #[ORM\Column(type: 'datetime')]
+    #[Groups(['alerte:read', 'alerte:write'])]
+    private ?\DateTimeInterface $dateCreation = null;
 
-    #[ORM\Column]
-    private ?int $Statut = null;
+    #[ORM\Column(length: 255)]
+    #[Groups(['alerte:read', 'alerte:write'])]
+    #[Assert\NotBlank(message: 'Le statut est obligatoire.')]
+    #[Assert\Choice(
+        choices: ['EN_COURS', 'RESOLUE', 'ANNULEE'],
+        message: 'Le statut doit être EN_COURS, RESOLUE ou ANNULEE.'
+    )]
+    private ?string $statut = 'EN_COURS';
 
-    /**
-     * @var Collection<int, Historique>
-     */
-    #[ORM\OneToMany(targetEntity: Historique::class, mappedBy: 'alerte')]
-    private Collection $historique;
+    #[ORM\Column(type: 'integer')]
+    #[Groups(['alerte:read', 'alerte:write'])]
+    #[Assert\NotNull(message: 'L\'ID utilisateur est obligatoire.')]
+    private ?int $userId = null;
 
-    /**
-     * @var Collection<int, Utilisateur>
-     */
-    #[ORM\OneToMany(targetEntity: Utilisateur::class, mappedBy: 'alerte')]
-    private Collection $utilisateurs;
+    #[ORM\OneToMany(mappedBy: 'alerte', targetEntity: Historique::class, cascade: ['persist', 'remove'])]
+    #[Groups(['alerte:read'])]
+    private Collection $historiques;
+
+    #[ORM\PrePersist]
+    public function setDefaultDateCreation(): void
+    {
+        if ($this->dateCreation === null) {
+            $this->dateCreation = new \DateTime();
+        }
+    }
 
     public function __construct()
     {
-        $this->historique = new ArrayCollection();
-        $this->utilisateurs = new ArrayCollection();
+        $this->historiques = new ArrayCollection();
     }
+
+    // Getters et setters
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDateEnvoi(): ?\DateTimeInterface
+    public function getDateCreation(): ?\DateTimeInterface
     {
-        return $this->DateEnvoi;
+        return $this->dateCreation;
     }
 
-    public function setDateEnvoi(\DateTimeInterface $DateEnvoi): static
+    public function setDateCreation(?\DateTimeInterface $dateCreation): static
     {
-        $this->DateEnvoi = $DateEnvoi;
-
+        $this->dateCreation = $dateCreation;
         return $this;
     }
 
-    public function getStatut(): ?int
+    public function getStatut(): ?string
     {
-        return $this->Statut;
+        return $this->statut;
     }
 
-    public function setStatut(int $Statut): static
+    public function setStatut(string $statut): static
     {
-        $this->Statut = $Statut;
-
+        $this->statut = $statut;
         return $this;
     }
 
-    /**
-     * @return Collection<int, Historique>
-     */
-    public function getHistorique(): Collection
+    public function getUserId(): ?int
     {
-        return $this->historique;
+        return $this->userId;
+    }
+
+    public function setUserId(int $userId): static
+    {
+        $this->userId = $userId;
+        return $this;
+    }
+
+    public function getHistoriques(): Collection
+    {
+        return $this->historiques;
     }
 
     public function addHistorique(Historique $historique): static
     {
-        if (!$this->historique->contains($historique)) {
-            $this->historique->add($historique);
+        if (!$this->historiques->contains($historique)) {
+            $this->historiques->add($historique);
             $historique->setAlerte($this);
         }
 
@@ -91,40 +127,9 @@ class Alerte
 
     public function removeHistorique(Historique $historique): static
     {
-        if ($this->historique->removeElement($historique)) {
-            // set the owning side to null (unless already changed)
+        if ($this->historiques->removeElement($historique)) {
             if ($historique->getAlerte() === $this) {
                 $historique->setAlerte(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Utilisateur>
-     */
-    public function getUtilisateurs(): Collection
-    {
-        return $this->utilisateurs;
-    }
-
-    public function addUtilisateur(Utilisateur $utilisateur): static
-    {
-        if (!$this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs->add($utilisateur);
-            $utilisateur->setAlerte($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUtilisateur(Utilisateur $utilisateur): static
-    {
-        if ($this->utilisateurs->removeElement($utilisateur)) {
-            // set the owning side to null (unless already changed)
-            if ($utilisateur->getAlerte() === $this) {
-                $utilisateur->setAlerte(null);
             }
         }
 

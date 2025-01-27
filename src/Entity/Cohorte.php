@@ -2,15 +2,20 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\ApiSubresource;
 use App\Repository\CohorteRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Utilisateur;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: CohorteRepository::class)]
-#[ApiResource]
+#[ORM\HasLifecycleCallbacks]
+#[ApiResource(
+    normalizationContext: ['groups' => ['cohorte:read']],
+)]
 class Cohorte
 {
     #[ORM\Id]
@@ -19,7 +24,7 @@ class Cohorte
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Nom = null;  // Champ modifié ici
+    private ?string $nom = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateCreation = null;
@@ -30,12 +35,22 @@ class Cohorte
     /**
      * @var Collection<int, Utilisateur>
      */
-    #[ORM\ManyToMany(targetEntity: Utilisateur::class, mappedBy: 'groupe')]
+    #[ORM\ManyToMany(targetEntity: Utilisateur::class, mappedBy: 'groupes')]
+    #[ApiSubresource] // Cette annotation expose les utilisateurs comme une sous-ressource
+    #[Groups(['cohorte:read'])]
     private Collection $utilisateurs;
 
     public function __construct()
     {
         $this->utilisateurs = new ArrayCollection();
+    }
+
+    #[ORM\PrePersist]
+    public function setDefaultDateCreation(): void
+    {
+        if ($this->dateCreation === null) {
+            $this->dateCreation = new \DateTime(); // Définit la date actuelle si aucune date n'est spécifiée
+        }
     }
 
     public function getId(): ?int
@@ -45,22 +60,22 @@ class Cohorte
 
     public function getNom(): ?string
     {
-        return $this->Nom;  // getter pour Nom
+        return $this->nom;
     }
 
-    public function setNom(string $Nom): static
+    public function setNom(string $nom): static
     {
-        $this->Nom = $Nom;
+        $this->nom = $nom;
 
         return $this;
     }
 
     public function getDateCreation(): ?\DateTimeInterface
     {
-        return $this->dateCreation;  // getter pour dateCreation
+        return $this->dateCreation;
     }
 
-    public function setDateCreation(\DateTimeInterface $dateCreation): static
+    public function setDateCreation(?\DateTimeInterface $dateCreation): static
     {
         $this->dateCreation = $dateCreation;
 
@@ -69,7 +84,7 @@ class Cohorte
 
     public function getDateFin(): ?\DateTimeInterface
     {
-        return $this->dateFin;  // getter pour dateFin
+        return $this->dateFin;
     }
 
     public function setDateFin(?\DateTimeInterface $dateFin): static
