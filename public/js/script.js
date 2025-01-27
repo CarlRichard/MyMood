@@ -64,7 +64,7 @@ formStagiaire.addEventListener("submit", (event) => {
       console.log("Données envoyées avec succès :", result);
       try {
         // Stocker le token dans localStorage
-        localStorage.setItem("tokenUser", result.tokenUser);
+        localStorage.setItem("tokenUser", result.token);
 
         // Redirection vers la page mymood
         window.location.href = "../pages/stagiaires/mymood.html";
