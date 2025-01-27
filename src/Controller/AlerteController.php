@@ -37,7 +37,7 @@ class AlerteController extends AbstractController
         // Crée l'historique associé à l'alerte
         $historique = new Historique();
         $historique->setHumeur($data['score']); // Score d'humeur fourni dans la requête
-        $historique->setDateEnvoi(new \DateTime());
+        $historique->setDateCreation (new \DateTime());
         $historique->setUtilisateur($user);
         $historique->setAlerte($alerte); // Associe l'historique à l'alerte
 

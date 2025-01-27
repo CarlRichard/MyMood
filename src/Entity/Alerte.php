@@ -25,6 +25,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         new Delete()
     ]
 )]
+
+#[ORM\HasLifecycleCallbacks]
 class Alerte
 {
     #[ORM\Id]

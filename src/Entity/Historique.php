@@ -16,7 +16,7 @@ class Historique
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $dateEnvoi = null;
+    private ?\DateTimeInterface $dateCreation  = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $humeur = null;
@@ -35,21 +35,21 @@ class Historique
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateAction = null;
 
-    // Getters et setters pour id, dateEnvoi, humeur, utilisateur et alerte
+    // Getters et setters pour id, dateCreation , humeur, utilisateur et alerte
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDateEnvoi(): ?\DateTimeInterface
+    public function getDateCreation (): ?\DateTimeInterface
     {
-        return $this->dateEnvoi;
+        return $this->dateCreation ;
     }
 
-    public function setDateEnvoi(\DateTimeInterface $DateEnvoi): static
+    public function setDateCreation (\DateTimeInterface $dateCreation ): static
     {
-        $this->dateEnvoi = $DateEnvoi;
+        $this->dateCreation  = $dateCreation ;
         return $this;
     }
 
