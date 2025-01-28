@@ -33,27 +33,5 @@ class HumeurController extends AbstractController
         return new JsonResponse(['status' => 'Humeur enregistrée'], JsonResponse::HTTP_CREATED);
     }
 
-    #[Route('/api/sos', name: 'send_sos', methods: ['POST'])]
-    public function sendSOS(Request $request, EntityManagerInterface $entityManager): JsonResponse
-    {
-        $data = json_decode($request->getContent(), true);
-        $user = $this->getUser();
 
-        $alerte = new Alerte();
-        $alerte->setUserId($user->getId());
-        $alerte->setStatut('EN_COURS');
-
-        $entityManager->persist($alerte);
-
-        $historique = new Historique();
-        $historique->setUtilisateur($user);
-        $historique->setAlerte($alerte);
-        $historique->setDateCreation(new \DateTime());
-        $historique->setHumeur($data['score'] ?? null);
-
-        $entityManager->persist($historique);
-        $entityManager->flush();
-
-        return new JsonResponse(['status' => 'SOS envoyé'], JsonResponse::HTTP_CREATED);
-    }
 }

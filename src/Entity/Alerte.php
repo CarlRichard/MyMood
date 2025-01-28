@@ -1,32 +1,28 @@
 <?php
-
 namespace App\Entity;
 
 use App\Repository\AlerteRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
-use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\Post;
-use ApiPlatform\Metadata\Put;
-use ApiPlatform\Metadata\Delete;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: AlerteRepository::class)]
 #[ApiResource(
     normalizationContext: ['groups' => ['alerte:read']],
     denormalizationContext: ['groups' => ['alerte:write']],
     operations: [
-        new Get(),
-        new Post(),
-        new Put(),
-        new Delete()
+        new \ApiPlatform\Metadata\Post(
+            controller: 'App\Controller\AlerteController::createSOS', 
+            name: 'create_sos' 
+        ),
+        new \ApiPlatform\Metadata\Put(),
+        new \ApiPlatform\Metadata\Delete(),
+        new \ApiPlatform\Metadata\Get(),
     ]
 )]
-
-#[ORM\HasLifecycleCallbacks]
 class Alerte
 {
     #[ORM\Id]
@@ -48,14 +44,10 @@ class Alerte
     )]
     private ?string $statut = 'EN_COURS';
 
-    #[ORM\Column(type: 'integer')]
-    #[Groups(['alerte:read', 'alerte:write'])]
-    #[Assert\NotNull(message: 'L\'ID utilisateur est obligatoire.')]
-    private ?int $userId = null;
+    #[ORM\ManyToOne(inversedBy: 'alertes')]
+    private ?Utilisateur $utilisateur = null;
 
-    #[ORM\OneToMany(mappedBy: 'alerte', targetEntity: Historique::class, cascade: ['persist', 'remove'])]
-    #[Groups(['alerte:read'])]
-    private Collection $historiques;
+
 
     #[ORM\PrePersist]
     public function setDefaultDateCreation(): void
@@ -63,11 +55,6 @@ class Alerte
         if ($this->dateCreation === null) {
             $this->dateCreation = new \DateTime();
         }
-    }
-
-    public function __construct()
-    {
-        $this->historiques = new ArrayCollection();
     }
 
     // Getters et setters
@@ -99,40 +86,16 @@ class Alerte
         return $this;
     }
 
-    public function getUserId(): ?int
+    public function getUtilisateur(): ?Utilisateur
     {
-        return $this->userId;
+        return $this->utilisateur;
     }
 
-    public function setUserId(int $userId): static
+    public function setUtilisateur(?Utilisateur $utilisateur): static
     {
-        $this->userId = $userId;
-        return $this;
-    }
-
-    public function getHistoriques(): Collection
-    {
-        return $this->historiques;
-    }
-
-    public function addHistorique(Historique $historique): static
-    {
-        if (!$this->historiques->contains($historique)) {
-            $this->historiques->add($historique);
-            $historique->setAlerte($this);
-        }
+        $this->utilisateur = $utilisateur;
 
         return $this;
     }
 
-    public function removeHistorique(Historique $historique): static
-    {
-        if ($this->historiques->removeElement($historique)) {
-            if ($historique->getAlerte() === $this) {
-                $historique->setAlerte(null);
-            }
-        }
-
-        return $this;
-    }
 }
