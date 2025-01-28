@@ -24,7 +24,7 @@ class HumeurController extends AbstractController
 
         $historique = new Historique();
         $historique->setHumeur($data['score']);
-        $historique->setDateEnvoi(new \DateTime());
+        $historique->setDateCreation(new \DateTime());
         $historique->setUtilisateur($user);
 
         $entityManager->persist($historique);
@@ -48,7 +48,7 @@ class HumeurController extends AbstractController
         $historique = new Historique();
         $historique->setUtilisateur($user);
         $historique->setAlerte($alerte);
-        $historique->setDateEnvoi(new \DateTime());
+        $historique->setDateCreation(new \DateTime());
         $historique->setHumeur($data['score'] ?? null);
 
         $entityManager->persist($historique);
