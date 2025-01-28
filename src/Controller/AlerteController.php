@@ -14,36 +14,23 @@ class AlerteController extends AbstractController
     #[Route('/api/alertes', name: 'create_sos', methods: ['POST'])]
     public function createSOS(Request $request, EntityManagerInterface $entityManager): JsonResponse
     {
-        $data = json_decode($request->getContent(), true);
-        $user = $this->getUser();
+        $user = $this->getUser();  // Récupérer l'utilisateur authentifié
 
         if (!$user) {
             return new JsonResponse(['error' => 'Utilisateur non authentifié'], JsonResponse::HTTP_UNAUTHORIZED);
         }
 
-        if (!isset($data['score'])) {
-            return new JsonResponse(['error' => 'Le score est requis'], JsonResponse::HTTP_BAD_REQUEST);
-        }
-
         // Crée l'alerte
         $alerte = new Alerte();
         $alerte->setStatut('EN_COURS'); // Statut initial
+        $alerte->setUtilisateur($user); // Associe l'utilisateur authentifié à l'alerte
         $alerte->setDateCreation(new \DateTime());
-        $alerte->setUserId($user->getId()); // Récupère l'ID utilisateur
 
+        // Persiste l'alerte dans la base de données
         $entityManager->persist($alerte);
         $entityManager->flush();
 
-        // Crée l'historique associé à l'alerte
-        $historique = new Historique();
-        $historique->setHumeur($data['score']); // Score d'humeur fourni dans la requête
-        $historique->setDateCreation (new \DateTime());
-        $historique->setUtilisateur($user);
-        $historique->setAlerte($alerte); // Associe l'historique à l'alerte
 
-        $entityManager->persist($historique);
-        $entityManager->flush();
-
-        return new JsonResponse(['status' => 'Alerte et historique créés'], JsonResponse::HTTP_CREATED);
+        return new JsonResponse(['status' => 'Alerte créés'], JsonResponse::HTTP_CREATED);
     }
 }
