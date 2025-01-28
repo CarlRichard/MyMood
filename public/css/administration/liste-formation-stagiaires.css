@@ -82,7 +82,7 @@ h2 {
 .container_label_input_formation {
     display: flex;
     align-items: center;
-    gap: 11px;
+    gap: 8px;
 }
 .container_label_input_formation label {
     border-radius: 5px;
@@ -203,8 +203,6 @@ h2 {
     gap: 14px;
     margin-top: 22px;
 }
-.container_stagiaires_details {
-}
 .container_stagiaires input {
     padding: 5px 0 5px 8px;
     color: var(--primary-color);
@@ -246,7 +244,6 @@ h2 {
 .container_stagiaires details:hover {
     background-color: var(--button-hover-bg-color);
     scale: 1.03;
-    font-weight: 500;
 }
 .container_stagiaires details > summary {
     font-family: "Roboto", serif;
@@ -295,9 +292,10 @@ h2 {
 .container_modal_stagiaires_label_input {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
 }
-.container_modal_stagiaires_label_input label {
+.modal_label {
     border-radius: 5px;
     background-color: var(--tertiary-color);
     color: var(--primary-color);
@@ -306,7 +304,7 @@ h2 {
     border: 1px solid var(--secondary-bg-color);
     box-shadow: 2px 2px 8px -2px var(--border-color);
 }
-.container_modal_stagiaires_label_input input {
+.modal_input {
     appearance: none;
     -webkit-appearance: none;
     background-color: var(--tertiary-color);
@@ -320,11 +318,11 @@ h2 {
     cursor: pointer;
     transition: 0.2s;
 }
-.container_modal_stagiaires_label_input input:hover {
+.modal_input:hover {
     scale: 1.07;
     background-color: var(--input-focus-bg-color);
 }
-.container_modal_stagiaires_label_input input:checked::before {
+.modal_input:checked::before {
     content: "✕";
     position: absolute;
     top: 50%;
@@ -563,7 +561,3 @@ h2 {
         gap: 60px;
     }
 }
-
-
-
-

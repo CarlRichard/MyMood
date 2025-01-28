@@ -1,22 +1,23 @@
-// SELECTIONNER MES INPUTS, MON BUTTON & MA SECTION
+// Sélectionner les éléments nécessaires pour la gestion du formulaire
 const formStagiaire = document.querySelector("#form_stagiaire");
 const inputEmailStagiaire = document.querySelector(".input_email");
 const inputPasswordStagiaire = document.querySelector(".input_password");
 const sectionError = document.querySelector(".section_error_msg");
 const main = document.querySelector("main");
 
-// RECUPERER LA VALEUR DES INPUTS ET L'ENVOYER QUAND ON CLICK SUR LE BUTTON
+// Ajouter un événement pour gérer la soumission du formulaire
 formStagiaire.addEventListener("submit", (event) => {
+  // Empêcher l'envoi par défaut du formulaire
   event.preventDefault();
   
-  // Réinitialisation de la section des erreurs avant d'ajouter les nouvelles erreurs
+  // Réinitialiser la section des erreurs avant de l'actualiser
   sectionError.innerHTML = "";
   
-  // Initialisation des tableaux des messages d'erreur
+  // Initialiser les variables pour les messages d'erreur
   let errorMessageEmail = "";
   let errorMessageMp = "";
 
-  // Vérification des erreurs dans les champs
+  // Vérifier si les champs email et mot de passe sont remplis
   if (!inputEmailStagiaire.value) {
     errorMessageEmail += "Veuillez entrer votre email !";
   }
@@ -24,7 +25,7 @@ formStagiaire.addEventListener("submit", (event) => {
     errorMessageMp += "Veuillez entrer votre mot de passe !";
   }
 
-  // Affichage des messages d'erreur si nécessaire
+  // Si des erreurs existent, les afficher dans la section des erreurs
   if (errorMessageEmail) {
     const errorElement = document.createElement("p");
     errorElement.classList.add("message_error");
@@ -38,45 +39,46 @@ formStagiaire.addEventListener("submit", (event) => {
     sectionError.appendChild(errorElement2);
   }
 
-  // Si des erreurs existent, on arrête l'envoi du formulaire
+  // Si des erreurs existent, empêcher l'envoi du formulaire
   if (errorMessageEmail || errorMessageMp) {
     main.appendChild(sectionError);
     return;
   } 
 
-  // CONSTRUCTION DE L'OBJET A ENVOYER
+  // Créer l'objet avec les données du formulaire à envoyer
   const data = {
     email: inputEmailStagiaire.value,
     password: inputPasswordStagiaire.value,
   };
   console.log(data);
 
-  // ENVOI DES DONNEES AVEC FETCH
+  // Envoyer les données du formulaire au serveur via fetch
   fetch("/api/login_check", {
-    method: "POST",
+    method: "POST",  // Spécifier que l'on envoie des données avec la méthode POST
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json",  // Définir le type de contenu à JSON
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(data),  // Convertir l'objet en JSON pour l'envoyer
   })
-    .then((response) => response.json())
+    .then((response) => response.json())  // Convertir la réponse en format JSON
     .then((result) => {
       console.log("Données envoyées avec succès :", result);
       try {
-        // Stocker le token dans localStorage
+        // Vérifier si un token valide est renvoyé
         const token = result.token;
 
-        // Vérification de la longueur du token
         if (!token || token.length < 2) {
           throw new Error("Token invalide");
         }
 
+        // Si le token est valide, le stocker dans le localStorage
         localStorage.setItem("tokenUser", token);
 
-        // Redirection vers la page mymood si le token est valide
+        // Rediriger l'utilisateur vers une autre page s'il y a un token valide
         window.location.href = "../pages/stagiaires/mymood.html";
       } catch (error) {
         console.error("Erreur lors du traitement du token ou de la redirection :", error);
+        // Afficher un message d'erreur si le token est invalide ou la redirection échoue
         const errorElement3 = document.createElement("p");
         errorElement3.classList.add('message_error');
         errorElement3.textContent = "Identifiant ou mot de passe incorrect.";
@@ -84,6 +86,7 @@ formStagiaire.addEventListener("submit", (event) => {
       }
     })
     .catch((error) => {
+      // Gérer les erreurs de la requête fetch
       console.error("Erreur lors de l'envoi :", error);
     });
 });

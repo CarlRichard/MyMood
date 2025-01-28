@@ -198,6 +198,12 @@ h2 {
   font-size: 18px;
   font-weight: lighter;
 }
+.msg_ok_humeur {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 15px;
+  color: red;
+}
   /* FOOTER */
   footer {
     position: absolute;
