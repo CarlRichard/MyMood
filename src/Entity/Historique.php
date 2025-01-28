@@ -25,17 +25,7 @@ class Historique
     #[ORM\JoinColumn(nullable: false)]
     private ?Utilisateur $utilisateur = null;
 
-    #[ORM\ManyToOne(targetEntity: Alerte::class, inversedBy: 'historiques')]
-    private ?Alerte $alerte = null;
-
-    // Propriétés pour l'action et la date de l'action
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $action = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $dateAction = null;
-
-    // Getters et setters pour id, dateCreation , humeur, utilisateur et alerte
+    // Getters et setters pour id, dateCreation , humeur, utilisateur 
 
     public function getId(): ?int
     {
@@ -75,38 +65,4 @@ class Historique
         return $this;
     }
 
-    public function getAlerte(): ?Alerte
-    {
-        return $this->alerte;
-    }
-
-    public function setAlerte(?Alerte $alerte): static
-    {
-        $this->alerte = $alerte;
-        return $this;
-    }
-
-    // Getter et setter pour l'action
-    public function getAction(): ?string
-    {
-        return $this->action;
-    }
-
-    public function setAction(?string $action): static
-    {
-        $this->action = $action;
-        return $this;
-    }
-
-    // Getter et setter pour la date de l'action
-    public function getDateAction(): ?\DateTimeInterface
-    {
-        return $this->dateAction;
-    }
-
-    public function setDateAction(?\DateTimeInterface $dateAction): static
-    {
-        $this->dateAction = $dateAction;
-        return $this;
-    }
 }

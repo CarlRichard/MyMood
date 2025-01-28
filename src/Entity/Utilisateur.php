@@ -59,9 +59,16 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(['utilisateur:read'])] 
     private Collection $groupes;
 
+    /**
+     * @var Collection<int, Alerte>
+     */
+    #[ORM\OneToMany(targetEntity: Alerte::class, mappedBy: 'utilisateur')]
+    private Collection $alertes;
+
     public function __construct()
     {
         $this->groupes = new ArrayCollection();
+        $this->alertes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -161,6 +168,36 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeGroupe(Cohorte $groupe): self
     {
         $this->groupes->removeElement($groupe);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Alerte>
+     */
+    public function getAlertes(): Collection
+    {
+        return $this->alertes;
+    }
+
+    public function addAlerte(Alerte $alerte): static
+    {
+        if (!$this->alertes->contains($alerte)) {
+            $this->alertes->add($alerte);
+            $alerte->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAlerte(Alerte $alerte): static
+    {
+        if ($this->alertes->removeElement($alerte)) {
+            // set the owning side to null (unless already changed)
+            if ($alerte->getUtilisateur() === $this) {
+                $alerte->setUtilisateur(null);
+            }
+        }
 
         return $this;
     }
