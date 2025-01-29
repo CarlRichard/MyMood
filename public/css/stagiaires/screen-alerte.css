@@ -5,6 +5,7 @@ header {
     align-items: center;
     justify-content: space-between;
 }
+
 .header_button {
     border-radius: 4px;
     background-color: var(--tertiary-color);
@@ -12,12 +13,13 @@ header {
     margin-right: 13px;
     color: var(--secondary-color);
     border: none;
+    cursor: pointer;
 }
 
 .header_button:hover {
-  scale: 1.04;
-  background-color: var(--button-hover-bg-color);
-  font-weight: 500;
+    scale: 1.04;
+    background-color: var(--button-hover-bg-color);
+    font-weight: 500;
 }
 
 /* MAIN */
@@ -29,6 +31,7 @@ header {
     gap: 34px;
     margin-top: 102px;
 }
+
 .notif_container {
     width: 311px;
     height: 343px;
@@ -39,10 +42,12 @@ header {
     justify-content: center;
     padding: 75px 35px;
 }
-.notif_container > p {
+
+.notif_container>p {
     color: var(--tertiary-color);
     text-align: center;
 }
+
 .notif_button {
     width: fit-content;
     padding: 11px 48px;
@@ -50,9 +55,11 @@ header {
     border: 1px solid var(--primary-bg-color);
     background-color: var(--tertiary-color);
     color: var(--secondary-color);
+    cursor: pointer;
 }
+
 .notif_button:hover {
-  scale: 1.02;
-  background-color: var(--button-hover-bg-color);
-  font-weight: 600;
+    scale: 1.02;
+    background-color: var(--button-hover-bg-color);
+    font-weight: 600;
 }

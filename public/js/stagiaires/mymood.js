@@ -67,7 +67,7 @@ moodLinkSos.addEventListener("click", () => {
         "Authorization": `Bearer ${tokenUser}`, // Ajouter le token dans l'en-tête pour authentification
       },
       body: JSON.stringify({
-        userId: 0, // ID utilisateur (peut être remplacé selon l'implémentation)
+        statut: "EN_COURS", // ID utilisateur (peut être remplacé selon l'implémentation)
       }),
     })
       .then((response) => response.json()) // Traiter la réponse du serveur au format JSON
