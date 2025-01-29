@@ -2,7 +2,7 @@
 const formStagiaire = document.querySelector("#form_stagiaire");
 const inputEmailStagiaire = document.querySelector(".input_email");
 const inputPasswordStagiaire = document.querySelector(".input_password");
-const sectionError = document.querySelector(".section_error_msg");
+const divError = document.querySelector(".div_error_msg");
 const main = document.querySelector("main");
 
 // Ajouter un événement pour gérer la soumission du formulaire
@@ -11,7 +11,7 @@ formStagiaire.addEventListener("submit", (event) => {
   event.preventDefault();
   
   // Réinitialiser la section des erreurs avant de l'actualiser
-  sectionError.innerHTML = "";
+  divError.innerHTML = "";
   
   // Initialiser les variables pour les messages d'erreur
   let errorMessageEmail = "";
@@ -30,18 +30,18 @@ formStagiaire.addEventListener("submit", (event) => {
     const errorElement = document.createElement("p");
     errorElement.classList.add("message_error");
     errorElement.textContent = errorMessageEmail;
-    sectionError.appendChild(errorElement);
+    divError.appendChild(errorElement);
   }
   if (errorMessageMp) {
     const errorElement2 = document.createElement("p");
     errorElement2.classList.add("message_error");
     errorElement2.textContent = errorMessageMp;
-    sectionError.appendChild(errorElement2);
+    divError.appendChild(errorElement2);
   }
 
   // Si des erreurs existent, empêcher l'envoi du formulaire
   if (errorMessageEmail || errorMessageMp) {
-    main.appendChild(sectionError);
+    main.appendChild(divError);
     return;
   } 
 
@@ -82,7 +82,7 @@ formStagiaire.addEventListener("submit", (event) => {
         const errorElement3 = document.createElement("p");
         errorElement3.classList.add('message_error');
         errorElement3.textContent = "Identifiant ou mot de passe incorrect.";
-        sectionError.appendChild(errorElement3);
+        divError.appendChild(errorElement3);
       }
     })
     .catch((error) => {

@@ -88,15 +88,16 @@ input::placeholder {
   font-weight: lighter;
 }
 
-.section_error_msg {
+.div_error_msg {
   display: flex;
   flex-direction: column;
   margin-top: 15px;
-  color: red;
 }
 .message_error {
-  font-size: 14px;
+  font-size: 15px;
   text-align: center;
+  font-weight: 500;
+  color: red;
 }
 /* FOOTER */
 footer {

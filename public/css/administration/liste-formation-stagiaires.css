@@ -14,7 +14,7 @@ header {
     color: var(--secondary-color);
     border-radius: 7px;
     background-color: var(--tertiary-color);
-    padding: 10px 15px;
+    padding: 10px 20px;
     cursor: pointer;
     box-shadow: 2px 2px 8px -2px var(--border-color);
     border: 1px solid var(--secondary-bg-color);
@@ -87,21 +87,19 @@ h2 {
 .container_label_input_formation label {
     border-radius: 5px;
     background-color: var(--tertiary-color);
-    color: var(--secondary-color);
-    padding: 8px 0px;
-    text-align: center;
+    color: var(--primary-color);
+    padding: 4px 0px 4px 8px;
     width: 225px;
     border: 1px solid var(--secondary-bg-color);
     box-shadow: 2px 2px 8px -2px var(--border-color);
 }
 .container_label_input_formation input {
-    appearance: none;
     -webkit-appearance: none;
     background-color: var(--tertiary-color);
-    width: 35px;
-    height: 35px;
+    width: 28px;
+    height: 28px;
     border-radius: 5px;
-    border: 1px solid var(--secondary-bg-color);
+    border: 1px solid var(--border-color);
     box-shadow: 2px 2px 8px -2px var(--border-color);
     cursor: pointer;
     position: relative;
@@ -126,13 +124,13 @@ h2 {
     margin-top: 14px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 .container_input_button_formation input {
     border: 1px solid var(--secondary-bg-color);
     box-shadow: 2px 2px 8px -2px var(--border-color);
     width: 225px;
-    padding: 10px 0px;
+    height: 32px;
     border-radius: 5px;
     padding-left: 16px;
     background-color: var(--tertiary-color);
@@ -152,8 +150,8 @@ h2 {
     box-shadow: 2px 2px 8px -2px var(--border-color);
     background-color: var(--tertiary-color);
     color: var(--secondary-color);
-    width: 36px;
-    height: 36px;
+    width: 31px;
+    height: 31px;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.2s;
@@ -168,7 +166,7 @@ h2 {
 .button_formation {
     color: var(--secondary-color);
     border-radius: 5px;
-    padding: 10px 10px;
+    padding: 8px 10px;
     background-color: var(--tertiary-color);
     border: 1px solid var(--secondary-bg-color);
     box-shadow: 2px 2px 8px -2px var(--border-color);
@@ -208,8 +206,6 @@ h2 {
     color: var(--primary-color);
     background-color: var(--tertiary-color);
     border-radius: 5px;
-    border: 1px solid var(--secondary-color);
-    box-shadow: 2px 2px 8px -5px #ff002f;
     height: 30px;
     transition: 0.2s;
 }
@@ -224,9 +220,13 @@ h2 {
 }
 .input_firstname {
     width: 169px;
+    border: 1px solid var(--secondary-color);
+    box-shadow: 2px 2px 8px -5px #ff002f;
 }
 .input_name {
     width: 155px;
+    border: 1px solid var(--secondary-color);
+    box-shadow: 2px 2px 8px -5px #ff002f;
 }
 .container_stagiaires details {
     width: 176px;
@@ -254,6 +254,8 @@ h2 {
 }
 .input_email {
     width: 240px;
+    border: 1px solid var(--secondary-color);
+    box-shadow: 2px 2px 8px -5px #ff002f;
 }
 .container_stagiaires button {
     margin-left: 6px;
@@ -394,8 +396,6 @@ h2 {
     color: var(--primary-color);
     background-color: var(--tertiary-color);
     border-radius: 5px;
-    border: 1px solid var(--secondary-color);
-    box-shadow: 2px 2px 8px -5px #ff002f;
     height: 30px;
     transition: 0.2s;
 }
@@ -410,9 +410,13 @@ h2 {
 }
 .input_firstname {
     width: 169px;
+    border: 1px solid var(--secondary-color);
+    box-shadow: 2px 2px 8px -5px #ff002f;
 }
 .input_name {
     width: 155px;
+    border: 1px solid var(--secondary-color);
+    box-shadow: 2px 2px 8px -5px #ff002f;
 }
 .container_listes details {
     width: 176px;
@@ -437,7 +441,6 @@ h2 {
 .container_listes details:hover {
     background-color: var(--button-hover-bg-color);
     scale: 1.03;
-    font-weight: 500;
 }
 .container_modal_stagiaires_label_input input {
     appearance: none;
@@ -455,6 +458,8 @@ h2 {
 }
 .input_email {
     width: 240px;
+    border: 1px solid var(--secondary-color);
+    box-shadow: 2px 2px 8px -5px #ff002f;
 }
 .liste_input_check {
     appearance: none;
@@ -488,7 +493,7 @@ h2 {
 .container_listes_button {
     color: var(--secondary-color);
     border-radius: 5px;
-    padding: 10px 10px;
+    padding: 8px 10px;
     background-color: var(--tertiary-color);
     border: 1px solid var(--secondary-color);
     box-shadow: 2px 2px 8px -4px var(--secondary-color);

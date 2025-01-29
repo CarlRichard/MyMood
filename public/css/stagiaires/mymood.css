@@ -6,7 +6,7 @@ header {
   align-items: center;
 }
 .header_button {
-  padding: 10px 35px;
+  padding: 10px 15px;
   border-radius: 4px;
   background-color: var(--tertiary-color);
   color: var(--secondary-color);
@@ -199,9 +199,10 @@ h2 {
   font-weight: lighter;
 }
 .msg_ok_humeur {
+  margin-top: 15px;
   font-size: 16px;
   text-align: center;
-  margin-top: 15px;
+  font-weight: 500;
   color: red;
 }
   /* FOOTER */
@@ -276,6 +277,9 @@ h2 {
   .humeur_appel > p > span {
     font-size: 20px;
   }
+  .msg_ok_humeur {
+  font-size: 15px;
+  }
 }
 
 /*=====SMARTPHONE=====*/
@@ -343,4 +347,7 @@ h2 {
   .humeur_appel > p > span {
     font-size: 16px;
   }
+  .msg_ok_humeur {
+    font-size: 13px;
+    }
 }
